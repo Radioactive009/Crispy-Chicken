@@ -1,0 +1,647 @@
+    /* General Reset */
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #ffffff;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    }
+    main{
+    flex: 1;
+    }
+    a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+    color: #1d4ed8;
+    outline: none;
+    }
+    img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    }
+
+    /* Container */
+    .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+    background: #0d1f44;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    position: static;
+    top: 0;
+    z-index: 1000;
+    }
+
+    /* Nav Layout */
+    .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    cursor: default;
+    user-select: none;
+    }
+
+    /* Nav Links */
+    nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto; /* Push nav links to the right of center */
+    align-items: center;
+    }
+    nav ul li a {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+    border-bottom: 2px solid #2563eb;
+    }
+
+    /* Hamburger - hidden by default */
+    #hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+    }
+    #hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+    .nav-content {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #0d1f44;
+        position: absolute;
+        top: 70px;
+        right: 1rem;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    #hamburger {
+        display: flex;
+    }
+    }
+
+    /* Blog Section Layout */
+    .blog-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    }
+
+    /* Horizontal Card Container */
+    .blog-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    }
+
+    /* Individual Blog Card - Horizontal Style */
+    .blog-card {
+    flex: 1 1 calc(33.33% - 2rem);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    max-width: 100%;
+    }
+
+    .blog-card:hover {
+    transform: translateY(-4px);
+    }
+
+    /* Image at Top */
+    .blog-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    }
+
+    /* Card Content */
+    .blog-card-content {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    }
+
+    .blog-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #111827;
+    }
+
+    .blog-card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    }
+
+    /* Read More Button */
+    .read-more-btn {
+    align-self: flex-start;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    }
+
+    .read-more-btn:hover {
+    background-color: #1d4ed8;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+    .blog-card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+    }
+
+    @media (max-width: 600px) {
+    .blog-card {
+        flex: 1 1 100%;
+    }
+    }
+
+
+    
+    /* Footer updated styles */
+    .site-footer {
+    background: #ffffff; /* Light background per guidelines */
+    color: #6b7280; /* Neutral gray text per guidelines */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4rem 1rem 2rem;
+    user-select: none;
+    border-top: 1px solid #e5e7eb;
+    }
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    padding-bottom: 2rem;
+
+    /* Add explicit grid-template-areas to swap Follow Us and Certifications */
+    grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+
+    /* Assign grid areas to footer sections */
+    .company-info {
+    grid-area: company-info;
+    }
+
+    .footer-links {
+    grid-area: footer-links;
+    }
+
+    .footer-policies {
+    grid-area: footer-policies;
+    }
+
+    .trust-logos {
+    grid-area: trust-logos;
+    }
+    .social-media {
+    grid-area: social-media;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827; /* Darker heading color */
+    font-size: 1.25rem;
+    }
+    .footer-section p,
+    .footer-section li,
+    .footer-section a {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    }
+    .footer-section a:hover,
+    .footer-section a:focus {
+    color: #2563eb;
+    outline: none;
+    }
+    .footer-section ul {
+    list-style: none;
+    padding-left: 0;
+    }
+    .footer-section ul li {
+    margin-bottom: 0.75rem;
+    }
+    .footer-section.company-info p {
+    margin-bottom: 0.5rem;
+    }
+    .social-icons {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    }
+    .social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .social-icons a:hover,
+    .social-icons a:focus {
+    transform: scale(1.15);
+    filter: brightness(1.25);
+    outline: none;
+    }
+    .trust-logos {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+    .trust-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+    transition: filter 0.3s ease;
+    cursor: default;
+    }
+    .trust-logo:hover,
+    .trust-logo:focus {
+    filter: drop-shadow(0 1px 4px rgb(37 99 235 / 0.8));
+    outline: none;
+    }
+    .footer-bottom {
+    background: #0d1f44;
+    color: white;
+    text-align: center;
+    margin-bottom: -5%;
+    padding: 1.5rem 1rem 1.5rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #e5e7eb;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+        /* Adjust grid-template-areas for smaller screens */
+        grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+    .trust-logos {
+        justify-content: center;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        /* Stack all footer sections vertically */
+        grid-template-areas:
+        "company-info"
+        "footer-links"
+        "footer-policies"
+        "trust-logos"
+        "social-media";
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    }
+
+    /* Blog Section Layout */
+    .blog-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    }
+
+    /* Horizontal Card Container */
+    .blog-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    }
+
+    /* Individual Blog Card - Horizontal Style */
+    .blog-card {
+    flex: 1 1 calc(33.33% - 2rem);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    max-width: 100%;
+    }
+
+    .blog-card:hover {
+    transform: translateY(-4px);
+    }
+
+    /* Image at Top */
+    .blog-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    }
+
+    /* Card Content */
+    .blog-card-content {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    }
+
+    .blog-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #111827;
+    }
+
+    .blog-card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    }
+
+   /* Read More Button */
+.read-more-btn {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  outline: none;
+}
+
+/* On Hover */
+.read-more-btn:hover {
+  background-color: blue;
+  color: white;
+}
+
+/* Optional: On Focus (for accessibility) */
+.read-more-btn:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+
+    /* Responsive */
+    @media (max-width: 992px) {
+    .blog-card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+    }
+
+    @media (max-width: 600px) {
+    .blog-card {
+        flex: 1 1 100%;
+    }
+    }
+
+
+    
+    /* Footer updated styles */
+    .site-footer {
+    background: #ffffff; /* Light background per guidelines */
+    color: #6b7280; /* Neutral gray text per guidelines */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4rem 1rem 2rem;
+    user-select: none;
+    border-top: 1px solid #e5e7eb;
+    }
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    padding-bottom: 2rem;
+
+    /* Add explicit grid-template-areas to swap Follow Us and Certifications */
+    grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+
+    /* Assign grid areas to footer sections */
+    .company-info {
+    grid-area: company-info;
+    }
+
+    .footer-links {
+    grid-area: footer-links;
+    }
+
+    .footer-policies {
+    grid-area: footer-policies;
+    }
+
+    .trust-logos {
+    grid-area: trust-logos;
+    }
+    .social-media {
+    grid-area: social-media;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827; /* Darker heading color */
+    font-size: 1.25rem;
+    }
+    .footer-section p,
+    .footer-section li,
+    .footer-section a {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    }
+    .footer-section a:hover,
+    .footer-section a:focus {
+    color: #2563eb;
+    outline: none;
+    }
+    .footer-section ul {
+    list-style: none;
+    padding-left: 0;
+    }
+    .footer-section ul li {
+    margin-bottom: 0.75rem;
+    }
+    .footer-section.company-info p {
+    margin-bottom: 0.5rem;
+    }
+    .social-icons {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    }
+    .social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .social-icons a:hover,
+    .social-icons a:focus {
+    transform: scale(1.15);
+    filter: brightness(1.25);
+    outline: none;
+    }
+    .trust-logos {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+    .trust-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+    transition: filter 0.3s ease;
+    cursor: default;
+    }
+    .trust-logo:hover,
+    .trust-logo:focus {
+    filter: drop-shadow(0 1px 4px rgb(37 99 235 / 0.8));
+    outline: none;
+    }
+    .footer-bottom {
+    background: #0d1f44;
+    color: white;
+    text-align: center;
+    margin-bottom: -5%;
+    padding: 1.5rem 1rem 1.5rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #e5e7eb;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+        /* Adjust grid-template-areas for smaller screens */
+        grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+    .trust-logos {
+        justify-content: center;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        /* Stack all footer sections vertically */
+        grid-template-areas:
+        "company-info"
+        "footer-links"
+        "footer-policies"
+        "trust-logos"
+        "social-media";
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    }
