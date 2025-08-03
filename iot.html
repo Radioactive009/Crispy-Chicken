@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IoT Monitoring in Diesel Generators Blog - EddyBits Innovations</title>
+  <link rel="canonical" href="https://eddybits.com/iot-monitoring-in-diesel-generators">
+  <link rel="icon" type="image/png" href="/Favicon.png">
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #ffffff;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    }
+    main{
+    flex: 1;
+    }
+    a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+    color: #1d4ed8;
+    outline: none;
+    }
+    img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    }
+
+    /* Container */
+    .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+    background: #0d1f44;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    position: static;
+    top: 0;
+    z-index: 1000;
+    }
+
+    /* Nav Layout */
+    .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    cursor: default;
+    user-select: none;
+    }
+
+    /* Nav Links */
+    nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto; /* Push nav links to the right of center */
+    align-items: center;
+    }
+    nav ul li a {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+    border-bottom: 2px solid #2563eb;
+    }
+
+    /* Hamburger - hidden by default */
+    #hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+    }
+    #hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+    .nav-content {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #0d1f44;
+        position: absolute;
+        top: 70px;
+        right: 1rem;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    #hamburger {
+        display: flex;
+    }
+    }
+
+    /* Footer updated styles */
+    .site-footer {
+    background: #ffffff; /* Light background per guidelines */
+    color: #6b7280; /* Neutral gray text per guidelines */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4rem 1rem 2rem;
+    user-select: none;
+    border-top: 1px solid #e5e7eb;
+    }
+    .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    padding-bottom: 2rem;
+
+    /* Add explicit grid-template-areas to swap Follow Us and Certifications */
+    grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+
+    /* Assign grid areas to footer sections */
+    .company-info {
+    grid-area: company-info;
+    }
+
+    .footer-links {
+    grid-area: footer-links;
+    }
+
+    .footer-policies {
+    grid-area: footer-policies;
+    }
+
+    .trust-logos {
+    grid-area: trust-logos;
+    }
+    .social-media {
+    grid-area: social-media;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827; /* Darker heading color */
+    font-size: 1.25rem;
+    }
+    .footer-section p,
+    .footer-section li,
+    .footer-section a {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    }
+    .footer-section a:hover,
+    .footer-section a:focus {
+    color: #2563eb;
+    outline: none;
+    }
+    .footer-section ul {
+    list-style: none;
+    padding-left: 0;
+    }
+    .footer-section ul li {
+    margin-bottom: 0.75rem;
+    }
+    .footer-section.company-info p {
+    margin-bottom: 0.5rem;
+    }
+    .social-icons {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    }
+    .social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .social-icons a:hover,
+    .social-icons a:focus {
+    transform: scale(1.15);
+    filter: brightness(1.25);
+    outline: none;
+    }
+    .trust-logos {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+    .trust-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+    transition: filter 0.3s ease;
+    cursor: default;
+    }
+    .trust-logo:hover,
+    .trust-logo:focus {
+    filter: drop-shadow(0 1px 4px rgb(37 99 235 / 0.8));
+    outline: none;
+    }
+    .footer-bottom {
+    background: #0d1f44;
+    color: white;
+    text-align: center;
+    margin-bottom: -5%;
+    padding: 1.5rem 1rem 1.5rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #e5e7eb;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+        /* Adjust grid-template-areas for smaller screens */
+        grid-template-areas:
+        "company-info footer-links footer-policies trust-logos"
+        "company-info footer-links social-media social-media";
+    }
+    .trust-logos {
+        justify-content: center;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        /* Stack all footer sections vertically */
+        grid-template-areas:
+        "company-info"
+        "footer-links"
+        "footer-policies"
+        "trust-logos"
+        "social-media";
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    }
+    main.blog-main {
+  flex: 1;
+}
+
+.blog-hero-img {
+  max-width: 800px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+
+.blog-content {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-content h1 {
+  font-size: 2rem;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.blog-content p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container" aria-label="Primary Navigation">
+    <div class="nav-content">
+      <div class="logo" tabindex="0" aria-label="EddyBits Innovations Logo">
+        <img src="/Logo png_2.png" alt="EddyBits Innovations Logo" style="height: 40px;" />
+      </div>
+
+      <ul id="primary-navigation" role="list">
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#partners">Partners</a></li>
+       <li><a href="../Contact-Us/Contact.html">Contact</a></li>
+
+      </ul>
+
+      <button 
+        class="hamburger" 
+        id="hamburger" 
+        aria-label="Toggle menu" 
+        aria-expanded="false" 
+        aria-controls="primary-navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<main class="blog-main">
+    <section class="blog-hero">
+      <img src="https://www.wbpsltd.co.uk/wp-content/uploads/2023/06/B1400_GT6697.jpg" alt="Diesel Generator" class="blog-hero-img" />
+    </section> <section class="blog-content container">
+      <h1>IoT Monitoring in Diesel Generators</h1>
+      <h2 style="color: black;">Benefits of IoT in Diesel Generators</h2>
+<h3 style="color: black;">1. Predictive Maintenance</h3>
+<h3 style="color: black;">2. Remote Monitoring</h3>
+<br>
+
+      <p>
+        In today’s fast-paced industrial environments, maintaining the reliability of diesel generators is critical. With the advent of the Internet of Things (IoT), companies now have the ability to monitor their generators in real-time. IoT sensors embedded within diesel generators can capture crucial metrics such as temperature, oil levels, vibration, and fuel consumption. These data points are then transmitted to cloud-based dashboards where predictive analytics alert operators about potential failures before they occur.
+      </p>
+      <p>
+        One of the greatest advantages of IoT monitoring is the ability to conduct preventive maintenance. Rather than relying on a fixed maintenance schedule, generators are serviced when the data suggests an issue may be arising. This reduces downtime, extends the life of machinery, and saves operational costs. Moreover, location-based tracking and remote diagnostics allow technicians to resolve issues without visiting the site physically, which is especially beneficial in remote installations.
+      </p>
+      <p>
+        Additionally, historical data from the sensors helps optimize energy usage. Organizations can identify inefficiencies in how generators are being run and make data-backed adjustments. Alerts via SMS or app notifications can be configured to notify operations managers of irregular patterns, such as unexpected load spikes or abnormal fuel usage.
+      </p>
+      <p>
+        IoT in diesel generator monitoring not only increases transparency but also brings peace of mind to facility managers. It’s a step toward smarter, more efficient power management systems. As IoT devices continue to evolve, integrating them into legacy systems will be the key to staying competitive in an energy-conscious world.
+      </p>
+    </section>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site Footer">
+  <div class="footer-container">
+    <!-- Company Info -->
+    <div class="footer-section company-info">
+      <h3>EddyBits Innovations Private Limited</h3>
+      <p>CIN: U27900HR2024PTC123582</p>
+      <p>1250, First Floor, Sector 15-II, Gurugram HR – 122001</p>
+      <p>Email: <a href="mailto:info@eddybits.com">info@eddybits.com</a></p>
+      <p>Phone: <a href="tel:+919289184648">+91-92891 84648</a></p>
+    </div>
+
+    <!-- Sitemap -->
+    <div class="footer-section footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="/products">Products / Solutions</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+
+      </ul>
+       </div>
+
+    <!-- Policies -->
+    <div class="footer-section footer-policies">
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="Cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="Privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section social-media">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/channel/UCylYH_WuVBqPQxTeMJjo6yg" aria-label="YouTube">
+          <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="YouTube" />
+        </a>
+        <a href="https://x.com/eddybitsindia" aria-label="Twitter">
+          <img src="https://img.freepik.com/premium-vector/x-new-social-network-black-app-icon-twitter-rebranded-as-x-twitter-s-logo-was-changed_277909-568.jpg?semt=ais_hybrid" alt="Twitter" />
+        </a>
+        <a href="#" aria-label="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+        </a>
+        <a href="https://www.linkedin.com/company/edddybits-innovations-private-limited" aria-label="LinkedIn">
+            <img src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png" alt="LinkedIn" />
+          </a>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="footer-section trust-logos">
+      <h4>Certifications</h4>
+      <div class="trust-logos">
+        <img src="https://cdn-icons-png.flaticon.com/512/3000/3000745.png" alt="DPIIT Certified" class="trust-logo" />
+        <img src="https://e7.pngegg.com/pngimages/725/47/png-clipart-government-of-india-ministry-of-micro-small-and-medium-enterprises-small-business-india-text-logo.png" alt="Udyam MSME" class="trust-logo" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Full-Width Bar -->
+  <div class="footer-bottom">
+    <p>© 2025 EddyBits Innovations Private Limited. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("primary-navigation");
+
+  hamburger.addEventListener("click", () => {
+    const expanded = hamburger.getAttribute("aria-expanded") === "true";
+    hamburger.setAttribute("aria-expanded", String(!expanded));
+    navMenu.classList.toggle("active");
+  });
+
+</script>
+</body>
+</html>
