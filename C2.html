@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="C3.css">
+</head>
+<body>
+    <body>
+
+<style type='text/css'>
+/* COMMON STYLES */
+:root,
+	html {
+	font-size: 10px; 
+}
+* {
+padding: 0; 
+ margin: 0; 
+ outline: 0;}
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #EDF1F4;
+	font-size: 15px;
+}
+ul,
+ol {
+	list-style-position: inside;
+}
+textarea,
+input[type='text'],
+input[type='button'],
+input[type='submit'],
+input[type='date'] {
+	-webkit-appearance: none;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}.link{
+	color: #1980D8;
+	cursor: pointer;
+}
+.cP{
+	cursor: pointer;
+}.flex-center-v{
+	display: flex;
+	align-items: center;
+}
+/* COMMON STYLES */
+.wf-form-component {
+	padding: 30px 40px 60px;
+}
+.wf-form-paid {
+	padding-bottom: 45px;
+}
+.wf-parent {
+	padding: 30px 0;
+	height: 100%;
+	box-sizing: border-box;
+	overflow: auto;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;}
+.wf-wrapper * {
+	box-sizing: border-box;
+}
+.wf-wrapper {
+	width: 100%;
+	max-width: 700px;
+	border-radius: 10px;
+	margin: auto;
+	border: none;
+	background-color: #fff;
+	color: #222;
+	box-shadow: 0px 0px 2px 0 #00000033;
+}
+.iframe-container{
+	height: 100%;
+	width: 100%;
+	border: none;
+	min-height: 365px;
+}
+.wf-logo {
+	display: flex;
+	margin-bottom: 30px;
+	max-height: 60px;
+	justify-content: center;
+}
+.wf-logo[data-ux-logo-size='lg'] {
+	height: 60px;
+}
+.wf-logo[data-ux-logo-size='md'] {
+	height: 50px;
+}
+.wf-logo[data-ux-logo-size='sm'] {
+	height: 30px;
+}
+.wf-logo[data-ux-logo-pos='left'] {
+	justify-content: left;
+}
+.wf-logo[data-ux-logo-pos='center'] {
+	justify-content: center;
+}
+.wf-logo[data-ux-logo-pos='right'] {
+	justify-content: right;
+}
+.wf-header {
+	font-size: 22px;
+	padding-bottom: 35px;
+	font-weight: bold;
+	word-break: break-word;
+}
+.wf-sec-wrap{
+	margin-bottom: 40px;
+}
+.wf-sec-wrap:first-child .wf-sec-head{
+	margin-top: 0;
+}
+.wf-sec-head {
+	margin-bottom: 20px;
+	margin-top: 35px;
+}
+.wf-sec-title {
+	font-size: 18px;
+	font-weight: bold;
+	word-break: break-word;
+}
+.wf-sec-desc {
+	margin: 0;
+	margin-top: 5px;
+	word-break: break-word;
+}
+.wf-row {
+	margin-bottom: 20px;
+}
+.wf-row-with-supplementary{
+	margin-bottom: 10px;
+}
+.wf-label {
+	padding: 7px 0;
+	word-break: break-word;
+}
+.wf-field:not( .multiple-fields-div) {
+	text-align: left;
+	word-break: break-word;
+	border: 0;
+	position: relative;
+}
+.wf-field-inner {
+	position: relative;
+	display: flex;
+	flex: 1;
+}
+.wf-field-input:focus {
+	border: 1px solid #1980d8;
+}
+.wf-field-dropdown .wf-field-input:focus{
+	border: none;  /* multipicklist search */
+}.wf-input-focus.wf-field::after {
+	opacity: 1;
+}
+.wf-input-focus.wf-field::after,
+.wf-field-error-active.wf-field .wf-field-error {
+	display: block;
+}
+.wf-field-error-active.wf-field .wf-error-view-more {
+display: flex;
+}.wf-field-error-active.wf-field .wf-field-input,.wf-field-error-active.wf-field .wf-field-dropdown {
+	border: 1px solid #FD6B6D;
+	box-shadow: 0 0 1px 1px #F4A2A2;
+}
+.wf-field-mandatory .wf-field-inner::before {
+	content: '';
+	position: absolute;
+	left: 0px;
+	background-color: #ff6a6a;
+	width: 3px;
+	height: 100%;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	z-index: 2;
+	top: 0;
+	bottom: 0;
+}
+.wf-field-mandatory .wf-field-inner.no-results-elem::before{ 
+	height: 98%;
+}
+.wf-field-input,
+.wf-field-dropdown {
+	width: 100%;
+	border: 1px solid #BDC8D3;
+	border-radius: 4px;
+	padding: 10px 15px;
+	min-height: 38px;
+	font-size: 15px;
+	font-family: inherit;
+}
+select:not([data-wform-field='select-multiple']) {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: transparent;
+	background-image: url(\"data:image/svg+xml;utf8,<svg fill='black' height='34' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>\");
+	background-repeat: no-repeat;
+	background-position-x: 99%;
+	background-color: #fff;
+	min-width: 70px;
+}
+input,
+select {
+	background-color: #fff;
+}
+.wf-field-item {
+	min-height: 38px;
+}
+.wf-time-field-wrapper {
+	display: flex;
+	flex: 1;
+}
+.wf-time-field-wrapper select {
+	margin-left: 10px;
+}
+.wf-form-component .wf-field-error,
+	.wf-form-component .wf-field-help-text {
+	text-align: left;
+}
+.wf-form-component .wf-field-error {
+	text-align: right;
+}
+.wf-field-error {
+	color: #FF5050;
+	font-size: 12px;
+	margin-top: 4px;
+	display: none;
+	animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+.wf-field-error-long {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.wf-error-view-more {
+	font-size: 12px;
+	display: none;
+	white-space: nowrap;
+	align-items: center;
+	color: #1880d8;
+	margin-top: 4px;
+	&:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+}
+.wf-error-parent-ele {
+	display: flex;
+	justify-content: end;
+}
+.wf-field-help-text {
+	color: #515159;
+	font-size: 12px;
+	margin-top: 5px;
+	}
+.wf-field-help-text + .wf-error-parent-ele .wf-field-error,
+ .wf-field-help-text + .wf-error-parent-ele .wf-error-view-more {
+margin: 0;
+}
+.wf-field-help-text-link{
+	text-decoration: none;
+}
+.wf-field-checkbox {
+	cursor: pointer;
+	border-radius: 3px;
+	min-width: 14px;
+	min-height: 20px;
+	box-sizing: initial;
+	accent-color: #1980d8;
+	margin-right: 10px;
+	margin-bottom: auto;
+}
+.wf-field-dropdown-date {
+	padding: 8px 12px;
+	border-radius: 4px;
+	font-size: 15px;
+	cursor: pointer;
+}
+.wf-field-dropdown-date {
+	border: 1px solid #BDC8D3;
+	}
+.wf-field-dropdown-date:hover {
+	border: 1px solid #65C199;
+}
+.wform-field-item-upload-input {
+	min-height: 5rem;
+	background-color: #FBFCFD;
+	border: 1px dashed #bdc8d3;
+	line-height: 2.1;
+	cursor: pointer;
+}
+.wform-field-item-upload-input:focus {
+	border: 1px dashed #bdc8d3;
+}
+.wform-file-upload-input-label {
+	background-color: #fff;
+	background-image: linear-gradient(to top, #F5F8FA, #ffffff);
+	color: #212129;
+	border-color: #d3dbe3;
+	border: 1px solid #d3dbe3;border-radius: 4px;
+	padding: 0.7rem 2rem;
+	font-size: 1.4rem;
+	right: 1rem;
+	transform: translateY(-50%);
+	top: 50%;
+	position: absolute;
+	}
+input[type='file']::file-selector-button, input[type='file']::-webkit-file-upload-button{
+ opacity: 0; 
+ width: 0;
+ height: 28px;
+}.wf-row[data-ux-field-appearance='captcha'] .wf-field{
+	display: flex;
+	align-items: center;
+}
+.wform-field-item-captcha-input{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.wf-field-captcha-img-wrap{
+	border: 1px solid #BDC8D3;
+	border-radius: 4px;
+	border-left: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	height: initial;
+	overflow: hidden;
+	min-width: 120px;
+}
+.wf-field-captcha-img{
+	height: 38px;
+	width: 100%;
+}
+.reload-img{
+	font-size: 23px;
+	color: #4B5569;
+	margin-right: 5px;
+}
+.reload-captcha{
+	margin-left: 10px;
+	user-select: none
+}
+.wf-btn {
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-size: 15px;
+	cursor: pointer;
+	font-weight: bold;
+	font-family: inherit;
+}
+.wf-btn[data-ux-btn-type='default'] {
+	border-radius: 0;
+}
+.wf-btn[data-ux-btn-type='primary'] {
+	border-radius: 4px;
+}
+.wf-btn[data-ux-btn-type='secondary'] {
+	border-radius: 20px;
+}
+.wform-btn-wrap {
+	display: flex;
+	margin-top: 40px;
+	align-items: center;
+	justify-content: flex-end;
+	flex: 1;
+}
+.wform-poweredby-container {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: #23384F;
+	font-size: 13px;
+	padding: 6px 8px;
+	font-family: sans-serif;
+	display: flex;
+	align-items: center;
+}
+.wf-text-area-input {
+	resize: vertical;
+	height: 100px;
+	min-height: 100px;
+	max-height: 200px;
+}
+.dropdown-contents::after {
+	border-left: 0.4rem solid transparent;
+	border-right: 0.4rem solid transparent;
+	border-top: 0.4rem solid black;
+	top: 45%;
+	content: '';
+	position: absolute;
+	right: 1rem;
+	pointer-events: none;
+}
+
+/* ==================== * MultiPicklist Styles * ==================== */
+.multiselect.wf-field-dropdown {
+	padding: 0;
+	cursor: text;
+	position: relative;
+}
+.multiselect.dropbox-active{
+	border-color: #1980d8;
+	border-radius: 4px 4px 0 0;
+}
+.multiselect.dropbox-active.dropdownTop:not(.ux-pick-mixed .multiselect.dropbox-active) {
+	border-radius: 0 0 4px 4px;
+	.dropdown-input {
+	min-height: 36px;
+	border-radius: 0 0 4px 4px;
+}
+}
+.multiselect.no-results-elem{
+	border-radius: 4px; 
+}
+.selected-options.selected-options-field {
+	display: none;
+}
+.selected-options{
+	max-height: 150px;
+	overflow: auto;
+	padding: 3px 5px 7px 5px;
+	border-radius: 4px 4px 0 0;
+	border-bottom: 0;
+	min-height: 38px;
+	height: 38px;
+	transition: 0.3s all; 
+	scroll-behavior: smooth;
+}
+.selected-options.hide-opt-list{
+	min-height: 0;  
+	height: 0;
+	padding: 0;
+}
+.selected-options.set-opt-list{
+	height: auto; 
+}
+.selected-options.drp-dwn-no-val{
+	border-right: unset !important;
+}
+.dropdown-input.drop-box-closed{
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.dropdown-input.drop-box-active{
+	border-top-right-radius: 0 !important;
+	border-radius: 4px;
+}
+.dN{
+	display: none !important;
+}
+.dropdown {
+	position: relative;
+	width: 100%;
+	 height: 36px;
+	transition: 0.3s all;
+}
+.dropdown.hide-dropdown{
+	height: 0;
+}
+.dropdown-input{
+	width: 100%;
+	border: none;
+	outline: none;
+	height: 30px;
+	padding: 5px;
+	border-radius: 4px;
+	border-radius: 4px 4px 0 0;
+	padding-left: 14px;
+}
+.dropdown-input::placeholder{
+	color: #919191;
+	font-size: 14px;
+}
+.dropdown-menu {
+	position: absolute;
+	display: none;
+	background-color: #fff;
+	border: 1px solid #BDC8D3;
+	border-radius: 0 0 5px 5px;
+	max-height: 300px;
+	overflow-y: auto;
+	width: calc(100% + 2px);
+	left: -1px;
+	z-index: 3;
+	top: 37px;
+	transition: 0.3s all;
+}
+.dropdown-menu.hide-the-inp{
+	top: 0;
+}
+.dropdown.open .dropdown-menu {
+	display: block;
+}
+.dropdown-menu.dropdown-focus{
+	border-color: #1980d8;
+	border-top: 1px solid #E6EBF1;
+}
+.dropdown-menu.dropdown-focus.dropdownTop:not(.ux-pick-mixed .dropdown-menu.dropdown-focus){
+	border-top: 1px solid #1980d8;
+	border-radius: 5px 5px 0 0;
+}
+.multiselect.dropbox-active .dropdown-input{
+	border-top: 0;
+	border-bottom: 0;
+	padding-bottom: 17px;
+	padding-top: 19px;
+	border-left-color: transparent;
+}
+.multi-tag{
+	background-color: #CEEBFF;
+	padding: 2px 5px 3px 10px;
+	border-radius: 15px;
+	margin: 5px 5px 0 2px;
+	display: inline-flex;
+	max-width: 96%;
+}
+.tag-data-val{
+	cursor: default;
+	max-width: 550px;
+}
+.no-results{
+	cursor: default !important;
+	text-align: center;
+	color: #919191;
+	font-size: 14px;
+}
+.no-results:hover{
+	background-color: unset !important;
+}
+.opt-hide{
+	display: none;
+}
+.opt-show{
+	display: block;
+}
+.tag-close-btn{
+	margin-left: 3px;
+	padding: 0px 4px 0px;
+	border-radius: 50%;
+	opacity: 0.5;
+	font-weight: bold;
+	cursor: pointer;
+}
+.multi-tag:hover .tag-close-btn{
+	opacity: 1;
+}
+.option{
+	padding: 10px 14px;
+	cursor: pointer;
+	border-bottom: 1px solid #f0f5f8;
+}
+.option:hover{
+	background-color: #f5f8fa;
+}
+.input-not-active{
+	display: none;
+}
+.ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+/* ==================== * MultiPicklist Styles * ==================== */
+
+.ux-pick-mixed {
+
+	.dropdown-contents {
+	padding: 3.5px 10px;
+	height: 100%;
+}
+
+	.dropdown-menu {
+	width: max-content;
+	max-width: 30rem;
+	top: 42px;
+	border: 1px solid #D2DBE5;
+	border-radius: 4px;
+	box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.2);
+	.option[data-selected=true] {
+	background-color: #E2F3FC;
+	font-weight: 600;
+	}
+}
+
+	.wf-field-dropdown.dropbox-active::after {
+	content: '';
+	border: 2px solid #1980d8;
+	position: absolute;
+ 	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	z-index: 1;
+	}
+	.wf-field-item:not(.selected-options) {
+		min-height: 36px;
+	}
+}
+.wf-form-component:not([data-ux-form-alignment='top']) .multiple-fields-div {
+	width: 70%;
+}
+.icon-with-text-dropdown {
+	.dropdown > span {
+		margin-right: 10px;
+	}
+	.icon-text-dropdown {
+		display: flex;
+		align-items: center;	
+	}
+	.option {
+		padding: 10px 14px;
+		}
+}
+.dropdown-with-search {
+	.dropdown.open .dropdown-menu {
+		display: flex;
+		flex-direction: column;
+	}
+	.dropdown-items-wrapper {
+		flex-grow: 1;
+		overflow-y: auto;
+}
+}
+.multiple-fields-div {
+	display: flex;
+	flex-direction: column;
+	&.flex-1-5 {
+		.field-1 {
+			flex: 1;
+}
+	.field-2 {
+			flex: 5;
+		}
+	}
+	.wf-field-dropdown {
+		border-radius: 4px 0px 0px 4px;
+		border-right: 0;
+	}
+	.wf-field-item:not(.selected-options) {
+		border-radius: 0px 4px 4px 0px;
+	}
+	&.wf-field {
+		word-break: unset;
+	}
+}
+.dropdown-menu {
+	.dropdown-search-input {
+		padding: 5px 10px;
+		width: 92%;
+		margin: 10px;
+		border: 1px solid #CDD8E3;
+		border-radius: 4px;
+	}
+	.dropdown-search-input:hover {
+		border: 1px solid #1980d8;
+	}
+	.dropdown-search-input:focus {
+		border: 2px solid #1980d8;
+	}
+}
+/* RTL Css change start */
+html[dir=rtl] {
+.multiple-fields-div{
+	.wf-field-item:not(.selected-options) {
+		border-radius: 4px 0px 0px 4px;
+	}
+	.wf-field-dropdown {
+		border-radius: 0px 4px 4px 0px;
+		border-left: 0;
+		border-right: 1px solid #BDC8D3;
+	}
+}
+.ux-pick-mixed {
+	.dropdown-menu {
+		right: -1px;
+	}
+}
+.wf-form-component[data-ux-form-alignment='left'] .wf-label {
+	padding-left: 2rem;
+	padding-right: 0;
+}
+.wf-time-field-wrapper select {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+}
+/* RTL Css change end *//* ==================== *** Form Alignment *** ==================== */
+.wf-form-component:not([data-ux-form-alignment='top']) .wf-row {
+	display: flex;
+}
+.wf-form-component:not([data-ux-form-alignment='top']) .wf-label {
+	word-break: break-word;
+	width: 30%;
+	padding: 1.2rem 2rem 0;
+}
+.wf-form-component[data-ux-form-alignment='left'] .wf-label {
+	text-align: left;
+	padding-left: 0;
+}
+.wf-form-component[data-ux-form-alignment='right'] .wf-label {
+	text-align: right;
+}
+.wf-form-component[data-ux-form-alignment='center'] .wf-label {
+	text-align: center;
+}
+.wform-btn-wrap[data-ux-pos='left'] {
+	justify-content: flex-start;
+}
+.wform-btn-wrap[data-ux-pos='center'] {
+	justify-content: center;
+}
+.wform-btn-wrap[data-ux-pos='right'] {
+	justify-content: flex-end;
+}
+.wf-form-component:not([data-ux-form-alignment='top']) .wf-field {
+	width: 70%;
+}
+.wf-form-component[data-ux-form-alignment='top'] .wf-label{
+	padding-top:0;
+}
+.wf-form-component[data-ux-form-alignment='top'] .reload-captcha{
+	text-align: right;
+}
+.wf-row[data-ux-field-appearance='captcha'] .wf-field-inner{
+	height: 38px;
+}
+.wf-row[data-ux-field-appearance='captcha'] .wf-field.wf-field-error-active{
+	flex-wrap: wrap;
+}
+.wf-row[data-ux-field-appearance='captcha'] .wf-field-error{
+	flex-basis: 100%;
+	width:100%;
+}
+/* ==================== *** Form Alignment ends *** ==================== */
+
+/* ==================== *** css animations *** ==================== */
+@keyframes shake {
+	10%,90% {transform: translate3d(-1px, 0, 0);}
+	20%,80% {transform: translate3d(2px, 0, 0);}
+	30%,50%,70% {transform: translate3d(-4px, 0, 0);}
+	40%,60% {transform: translate3d(4px, 0, 0);}
+}
+/* ==================== *** css animations ends *** ==================== */
+
+/* ==================== *** Mediaquery *** ==================== */
+@media screen and (max-width: 1024px) {
+	.wf-wrapper {
+	max-width: 700px;
+	width: calc(100% - 40px);
+	border: 0;
+}
+	.wf-field input[type=text],
+	.wf-field select,
+	.wf-field textarea {
+		width: 100% !important;
+	}
+	.wf-label:empty {
+		display: none;
+	}
+.wf-field-checkbox {
+	min-width: 18px;
+	min-height: 18px;
+}
+}
+@media screen and (max-width: 768px) {
+	.wf-wrapper {
+	max-width: 700px;
+	width: calc(100% - 40px);
+	border: 0;
+}
+.wf-field input[type=text],
+	.wf-field select,
+	.wf-field textarea {
+	width: 100% !important;
+	}
+.wf-label:empty {
+	display: none;
+	}
+.wf-form-component[data-ux-form-alignment='top'] .wform-btn-wrap {
+	justify-content: flex-start;
+}
+}
+@media screen and (max-width: 590px) {
+.wf-parent {
+	padding: 20px 0;
+}
+.wf-wrapper {
+	width: calc(100% - 40px) !Important;
+	border: 0;
+}
+.wf-form-component {
+	padding: 20px;
+	padding-bottom:60px;
+}
+.wf-field input[type=text],
+.wf-field select,
+.wf-field textarea {
+	width: 100% !important;
+}
+.wf-label:empty {
+	display: none;
+}
+.wf-row[data-ux-field-appearance='date-time'] .wf-field-inner{
+	flex-direction: column;
+}
+.wf-row[data-ux-field-appearance='date-time'] .wf-time-field-wrapper{
+	margin-top: 10px;
+}
+.wf-row[data-ux-field-appearance='date-time'] .wf-field-item:first-child{
+	margin-left: 0;
+}
+.wf-row[data-ux-field-appearance='date-time'] .wf-field-item{
+	flex: 1;
+}
+.wf-row[data-ux-field-appearance='captcha'] .wf-field{
+	flex-direction: column;
+}
+.wf-row[data-ux-field-appearance='captcha'] .reload-captcha{
+	margin-left: auto;
+}
+.wf-row[data-ux-field-appearance='captcha'] .wf-field-inner{
+	width: 100%;
+}
+}
+/* ==================== *** Mediaquery ends *** ==================== */
+</style>
+
+
+<header>
+  <nav class="container" aria-label="Primary Navigation">
+    <div class="nav-content">
+      <div class="logo" tabindex="0" aria-label="EddyBits Innovations Logo">
+        <img src="/Logo png_2.png" alt="EddyBits Innovations Logo" style="height: 40px;">
+      </div>
+
+      <ul id="primary-navigation" role="list">
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>+
+
+        
+        <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+
+<h1 id="contact-title">Contact Us</h1>
+<p id="subtitle">Get in touch to learn how EddyBits can transform your industrial operations.</p>
+
+<iframe id="hidden929836000000407878Frame" name="hidden929836000000407878Frame" style="display: none;" class="iframe-container"></iframe>
+  <div class="wf-parent" id="BiginWebToRecordFormParent929836000000407878" style="background-color: #EAEEF2">
+	<div class="wf-wrapper" id="BiginWebToRecordFormDiv929836000000407878">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<form id="BiginWebToRecordForm929836000000407878" name="BiginWebToRecordForm929836000000407878" class="wf-form-component wf-form-paid" data-ux-form-alignment="top" style="font-family: Arial;position: relative;font-size:15px;" method="POST" enctype="multipart/form-data" target="hidden929836000000407878Frame" onsubmit="javascript:document.charset=&quot;UTF-8&quot;; return validateForm929836000000407878()" accept-charset="UTF-8" action="https://bigin.zoho.in/crm/WebForm">
+<!-- Do not remove this code. -->
+ 	<input type="text" style="display:none;" name="xnQsjsdp" value="dcc59c92e5c0b4a488c0e20070898244cee352ec16d3287d5ce53562439c1e7e">
+ 	<input type="hidden" name="zc_gad" id="zc_gad" value="">
+ 	<input type="text" style="display:none;" name="xmIwtLD" value="f39bbd1fc5395139f31c2b1f031efd0ba3e704a840416f339ffed39abbdd0047dbaf17d133bf5144c86cbcef90880955">
+ 	<input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=">
+ 	<input type="hidden" name="rmsg" id="rmsg" value="true">
+ 	<input type="text" style="display:none;" name="returnURL" value="null">
+ 	<div class="wf-logo" data-ux-logo-pos="center" data-ux-logo-size="lg"><img src="https://bigin.zoho.in/crm/WebformImgServlet?type=logo&amp;rid=f39bbd1fc5395139f31c2b1f031efd0ba3e704a840416f339ffed39abbdd0047dbaf17d133bf5144c86cbcef90880955giddcc59c92e5c0b4a488c0e20070898244cee352ec16d3287d5ce53562439c1e7e"></div>
+ 	<div class="wf-header">Contact us</div>
+ 	<div id="elementDiv929836000000407878" class="wf-form-wrapper">
+ 	 	<div class="wf-row">  
+ 	 	 	<div class="wf-label">First Name</div>
+ 	 	 	<div class="wf-field wf-field-mandatory">
+ 	 	 	 	<div class="wf-field-inner">
+ 	 	 	 	<input fvalidate="true" ftype="string_rest_number" name="First Name" maxlength="40" type="text" value="" class="wf-field-item wf-field-input" oninput="removeError(this)">
+ 	 	 	 	</div>
+ 	 	 	</div>
+ 	 	</div>
+ 	 	<div class="wf-row">  
+ 	 	 	<div class="wf-label">Last Name</div>
+ 	 	 	<div class="wf-field wf-field-mandatory">
+ 	 	 	 	<div class="wf-field-inner">
+ 	 	 	 	<input fvalidate="true" ftype="string_rest_number" name="Last Name" maxlength="80" type="text" value="" class="wf-field-item wf-field-input" oninput="removeError(this)">
+ 	 	 	 	</div>
+ 	 	 	</div>
+ 	 	</div>
+ 	 	<div class="wf-row">  
+ 	 	 	<div class="wf-label">Mobile</div>
+ 	 	 	<div class="wf-field wf-field-mandatory ux-pick-mixed multiple-fields-div flex-1-5">
+ 	 	 	 	<div class="wf-field-inner">
+ 	 	 	 	<div id="phMobile" class="multiselect wf-field-dropdown field-1 dropdown-with-search icon-with-text-dropdown single-select-drp" onclick="removeError(this); showDropDown929836000000407878(this)" isphone="true" findip="true">
+ 	 	 	 	 	<div class="selected-options hide-opt-list wf-field-item selected-options-field" style="display:none;"></div>
+ 	 	 	 	 	<div class="dropdown flex-center-v dropdown-contents">
+ 	 	 	 	 	 	<input type="text" class="dropdown-input input-not-active wf-field-item wf-field-input" style="display:none;">
+ 	 	 	 	 	 	<span class="mR10 f22 content-display-area icon-field">+91</span>
+ 	 	 	 	 	 	<span class="color-222 content-display-area"></span>
+ 	 	 	 	 	 	<ul class="dropdown-menu"><input type="text" placeholder="Search" class="dropdown-search-input"><div class="dropdown-items-wrapper"><div class="option" iso="af"><span class="icon-text-dropdown" data-value="Afghanistan +93"><span data-show-in-selection="false" style="margin-right: 10px;">Afghanistan</span><span data-show-in-selection="true" style="margin-right: 10px;">+93</span></span></div><div class="option" iso="al"><span class="icon-text-dropdown" data-value="Albania +355"><span data-show-in-selection="false" style="margin-right: 10px;">Albania</span><span data-show-in-selection="true" style="margin-right: 10px;">+355</span></span></div><div class="option" iso="dz"><span class="icon-text-dropdown" data-value="Algeria +213"><span data-show-in-selection="false" style="margin-right: 10px;">Algeria</span><span data-show-in-selection="true" style="margin-right: 10px;">+213</span></span></div><div class="option" iso="as"><span class="icon-text-dropdown" data-value="American Samoa +1684"><span data-show-in-selection="false" style="margin-right: 10px;">American Samoa</span><span data-show-in-selection="true" style="margin-right: 10px;">+1684</span></span></div><div class="option" iso="ad"><span class="icon-text-dropdown" data-value="Andorra +376"><span data-show-in-selection="false" style="margin-right: 10px;">Andorra</span><span data-show-in-selection="true" style="margin-right: 10px;">+376</span></span></div><div class="option" iso="ao"><span class="icon-text-dropdown" data-value="Angola +244"><span data-show-in-selection="false" style="margin-right: 10px;">Angola</span><span data-show-in-selection="true" style="margin-right: 10px;">+244</span></span></div><div class="option" iso="ai"><span class="icon-text-dropdown" data-value="Anguilla +1264"><span data-show-in-selection="false" style="margin-right: 10px;">Anguilla</span><span data-show-in-selection="true" style="margin-right: 10px;">+1264</span></span></div><div class="option" iso="aq"><span class="icon-text-dropdown" data-value="Antarctica +672"><span data-show-in-selection="false" style="margin-right: 10px;">Antarctica</span><span data-show-in-selection="true" style="margin-right: 10px;">+672</span></span></div><div class="option" iso="ag"><span class="icon-text-dropdown" data-value="Antigua &amp; Barbuda +1268"><span data-show-in-selection="false" style="margin-right: 10px;">Antigua &amp; Barbuda</span><span data-show-in-selection="true" style="margin-right: 10px;">+1268</span></span></div><div class="option" iso="ar"><span class="icon-text-dropdown" data-value="Argentina +54"><span data-show-in-selection="false" style="margin-right: 10px;">Argentina</span><span data-show-in-selection="true" style="margin-right: 10px;">+54</span></span></div><div class="option" iso="am"><span class="icon-text-dropdown" data-value="Armenia +374"><span data-show-in-selection="false" style="margin-right: 10px;">Armenia</span><span data-show-in-selection="true" style="margin-right: 10px;">+374</span></span></div><div class="option" iso="aw"><span class="icon-text-dropdown" data-value="Aruba +297"><span data-show-in-selection="false" style="margin-right: 10px;">Aruba</span><span data-show-in-selection="true" style="margin-right: 10px;">+297</span></span></div><div class="option" iso="au"><span class="icon-text-dropdown" data-value="Australia +61"><span data-show-in-selection="false" style="margin-right: 10px;">Australia</span><span data-show-in-selection="true" style="margin-right: 10px;">+61</span></span></div><div class="option" iso="at"><span class="icon-text-dropdown" data-value="Austria +43"><span data-show-in-selection="false" style="margin-right: 10px;">Austria</span><span data-show-in-selection="true" style="margin-right: 10px;">+43</span></span></div><div class="option" iso="az"><span class="icon-text-dropdown" data-value="Azerbaijan +994"><span data-show-in-selection="false" style="margin-right: 10px;">Azerbaijan</span><span data-show-in-selection="true" style="margin-right: 10px;">+994</span></span></div><div class="option" iso="bs"><span class="icon-text-dropdown" data-value="Bahamas +1242"><span data-show-in-selection="false" style="margin-right: 10px;">Bahamas</span><span data-show-in-selection="true" style="margin-right: 10px;">+1242</span></span></div><div class="option" iso="bh"><span class="icon-text-dropdown" data-value="Bahrain +973"><span data-show-in-selection="false" style="margin-right: 10px;">Bahrain</span><span data-show-in-selection="true" style="margin-right: 10px;">+973</span></span></div><div class="option" iso="bd"><span class="icon-text-dropdown" data-value="Bangladesh +880"><span data-show-in-selection="false" style="margin-right: 10px;">Bangladesh</span><span data-show-in-selection="true" style="margin-right: 10px;">+880</span></span></div><div class="option" iso="bb"><span class="icon-text-dropdown" data-value="Barbados +1246"><span data-show-in-selection="false" style="margin-right: 10px;">Barbados</span><span data-show-in-selection="true" style="margin-right: 10px;">+1246</span></span></div><div class="option" iso="by"><span class="icon-text-dropdown" data-value="Belarus +375"><span data-show-in-selection="false" style="margin-right: 10px;">Belarus</span><span data-show-in-selection="true" style="margin-right: 10px;">+375</span></span></div><div class="option" iso="be"><span class="icon-text-dropdown" data-value="Belgium +32"><span data-show-in-selection="false" style="margin-right: 10px;">Belgium</span><span data-show-in-selection="true" style="margin-right: 10px;">+32</span></span></div><div class="option" iso="bz"><span class="icon-text-dropdown" data-value="Belize +501"><span data-show-in-selection="false" style="margin-right: 10px;">Belize</span><span data-show-in-selection="true" style="margin-right: 10px;">+501</span></span></div><div class="option" iso="bj"><span class="icon-text-dropdown" data-value="Benin +229"><span data-show-in-selection="false" style="margin-right: 10px;">Benin</span><span data-show-in-selection="true" style="margin-right: 10px;">+229</span></span></div><div class="option" iso="bm"><span class="icon-text-dropdown" data-value="Bermuda +1441"><span data-show-in-selection="false" style="margin-right: 10px;">Bermuda</span><span data-show-in-selection="true" style="margin-right: 10px;">+1441</span></span></div><div class="option" iso="bt"><span class="icon-text-dropdown" data-value="Bhutan +975"><span data-show-in-selection="false" style="margin-right: 10px;">Bhutan</span><span data-show-in-selection="true" style="margin-right: 10px;">+975</span></span></div><div class="option" iso="bo"><span class="icon-text-dropdown" data-value="Bolivia +591"><span data-show-in-selection="false" style="margin-right: 10px;">Bolivia</span><span data-show-in-selection="true" style="margin-right: 10px;">+591</span></span></div><div class="option" iso="ba"><span class="icon-text-dropdown" data-value="Bosnia and Herzegovina +387"><span data-show-in-selection="false" style="margin-right: 10px;">Bosnia and Herzegovina</span><span data-show-in-selection="true" style="margin-right: 10px;">+387</span></span></div><div class="option" iso="bw"><span class="icon-text-dropdown" data-value="Botswana +267"><span data-show-in-selection="false" style="margin-right: 10px;">Botswana</span><span data-show-in-selection="true" style="margin-right: 10px;">+267</span></span></div><div class="option" iso="bv"><span class="icon-text-dropdown" data-value="Bouvet Island +47"><span data-show-in-selection="false" style="margin-right: 10px;">Bouvet Island</span><span data-show-in-selection="true" style="margin-right: 10px;">+47</span></span></div><div class="option" iso="br"><span class="icon-text-dropdown" data-value="Brazil +55"><span data-show-in-selection="false" style="margin-right: 10px;">Brazil</span><span data-show-in-selection="true" style="margin-right: 10px;">+55</span></span></div><div class="option" iso="io"><span class="icon-text-dropdown" data-value="British Indian Ocean Territory +246"><span data-show-in-selection="false" style="margin-right: 10px;">British Indian Ocean Territory</span><span data-show-in-selection="true" style="margin-right: 10px;">+246</span></span></div><div class="option" iso="vg"><span class="icon-text-dropdown" data-value="British Virgin Islands +1284"><span data-show-in-selection="false" style="margin-right: 10px;">British Virgin Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1284</span></span></div><div class="option" iso="bn"><span class="icon-text-dropdown" data-value="Brunei +673"><span data-show-in-selection="false" style="margin-right: 10px;">Brunei</span><span data-show-in-selection="true" style="margin-right: 10px;">+673</span></span></div><div class="option" iso="bg"><span class="icon-text-dropdown" data-value="Bulgaria +359"><span data-show-in-selection="false" style="margin-right: 10px;">Bulgaria</span><span data-show-in-selection="true" style="margin-right: 10px;">+359</span></span></div><div class="option" iso="bf"><span class="icon-text-dropdown" data-value="Burkina Faso +226"><span data-show-in-selection="false" style="margin-right: 10px;">Burkina Faso</span><span data-show-in-selection="true" style="margin-right: 10px;">+226</span></span></div><div class="option" iso="bi"><span class="icon-text-dropdown" data-value="Burundi +257"><span data-show-in-selection="false" style="margin-right: 10px;">Burundi</span><span data-show-in-selection="true" style="margin-right: 10px;">+257</span></span></div><div class="option" iso="kh"><span class="icon-text-dropdown" data-value="Cambodia +855"><span data-show-in-selection="false" style="margin-right: 10px;">Cambodia</span><span data-show-in-selection="true" style="margin-right: 10px;">+855</span></span></div><div class="option" iso="cm"><span class="icon-text-dropdown" data-value="Cameroon +237"><span data-show-in-selection="false" style="margin-right: 10px;">Cameroon</span><span data-show-in-selection="true" style="margin-right: 10px;">+237</span></span></div><div class="option" iso="ca"><span class="icon-text-dropdown" data-value="Canada +1"><span data-show-in-selection="false" style="margin-right: 10px;">Canada</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso=""><span class="icon-text-dropdown" data-value="Cape Verde +238"><span data-show-in-selection="false" style="margin-right: 10px;">Cape Verde</span><span data-show-in-selection="true" style="margin-right: 10px;">+238</span></span></div><div class="option" iso="cv"><span class="icon-text-dropdown" data-value="Caribbean Netherlands +599"><span data-show-in-selection="false" style="margin-right: 10px;">Caribbean Netherlands</span><span data-show-in-selection="true" style="margin-right: 10px;">+599</span></span></div><div class="option" iso="ky"><span class="icon-text-dropdown" data-value="Cayman Islands +1345"><span data-show-in-selection="false" style="margin-right: 10px;">Cayman Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1345</span></span></div><div class="option" iso="cf"><span class="icon-text-dropdown" data-value="Central African Republic +236"><span data-show-in-selection="false" style="margin-right: 10px;">Central African Republic</span><span data-show-in-selection="true" style="margin-right: 10px;">+236</span></span></div><div class="option" iso="td"><span class="icon-text-dropdown" data-value="Chad +235"><span data-show-in-selection="false" style="margin-right: 10px;">Chad</span><span data-show-in-selection="true" style="margin-right: 10px;">+235</span></span></div><div class="option" iso="cl"><span class="icon-text-dropdown" data-value="Chile +56"><span data-show-in-selection="false" style="margin-right: 10px;">Chile</span><span data-show-in-selection="true" style="margin-right: 10px;">+56</span></span></div><div class="option" iso="cn"><span class="icon-text-dropdown" data-value="China +86"><span data-show-in-selection="false" style="margin-right: 10px;">China</span><span data-show-in-selection="true" style="margin-right: 10px;">+86</span></span></div><div class="option" iso="cx"><span class="icon-text-dropdown" data-value="Christmas Island +61"><span data-show-in-selection="false" style="margin-right: 10px;">Christmas Island</span><span data-show-in-selection="true" style="margin-right: 10px;">+61</span></span></div><div class="option" iso="cc"><span class="icon-text-dropdown" data-value="Cocos (Keeling) Island +61"><span data-show-in-selection="false" style="margin-right: 10px;">Cocos (Keeling) Island</span><span data-show-in-selection="true" style="margin-right: 10px;">+61</span></span></div><div class="option" iso="co"><span class="icon-text-dropdown" data-value="Colombia +57"><span data-show-in-selection="false" style="margin-right: 10px;">Colombia</span><span data-show-in-selection="true" style="margin-right: 10px;">+57</span></span></div><div class="option" iso="km"><span class="icon-text-dropdown" data-value="Comoros +269"><span data-show-in-selection="false" style="margin-right: 10px;">Comoros</span><span data-show-in-selection="true" style="margin-right: 10px;">+269</span></span></div><div class="option" iso="cg"><span class="icon-text-dropdown" data-value="Congo - Brazzaville +242"><span data-show-in-selection="false" style="margin-right: 10px;">Congo - Brazzaville</span><span data-show-in-selection="true" style="margin-right: 10px;">+242</span></span></div><div class="option" iso="cd"><span class="icon-text-dropdown" data-value="Congo - Kinshasa +243"><span data-show-in-selection="false" style="margin-right: 10px;">Congo - Kinshasa</span><span data-show-in-selection="true" style="margin-right: 10px;">+243</span></span></div><div class="option" iso="ck"><span class="icon-text-dropdown" data-value="Cook Islands +682"><span data-show-in-selection="false" style="margin-right: 10px;">Cook Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+682</span></span></div><div class="option" iso="cr"><span class="icon-text-dropdown" data-value="Costa Rica +506"><span data-show-in-selection="false" style="margin-right: 10px;">Costa Rica</span><span data-show-in-selection="true" style="margin-right: 10px;">+506</span></span></div><div class="option" iso="hr"><span class="icon-text-dropdown" data-value="Croatia +385"><span data-show-in-selection="false" style="margin-right: 10px;">Croatia</span><span data-show-in-selection="true" style="margin-right: 10px;">+385</span></span></div><div class="option" iso="cu"><span class="icon-text-dropdown" data-value="Cuba +53"><span data-show-in-selection="false" style="margin-right: 10px;">Cuba</span><span data-show-in-selection="true" style="margin-right: 10px;">+53</span></span></div><div class="option" iso="cw"><span class="icon-text-dropdown" data-value="Curaçao +599"><span data-show-in-selection="false" style="margin-right: 10px;">Curaçao</span><span data-show-in-selection="true" style="margin-right: 10px;">+599</span></span></div><div class="option" iso="cy"><span class="icon-text-dropdown" data-value="Cyprus +357"><span data-show-in-selection="false" style="margin-right: 10px;">Cyprus</span><span data-show-in-selection="true" style="margin-right: 10px;">+357</span></span></div><div class="option" iso="cz"><span class="icon-text-dropdown" data-value="Czechia +420"><span data-show-in-selection="false" style="margin-right: 10px;">Czechia</span><span data-show-in-selection="true" style="margin-right: 10px;">+420</span></span></div><div class="option" iso="ci"><span class="icon-text-dropdown" data-value="Côte d?Ivoire +225"><span data-show-in-selection="false" style="margin-right: 10px;">Côte d?Ivoire</span><span data-show-in-selection="true" style="margin-right: 10px;">+225</span></span></div><div class="option" iso="dk"><span class="icon-text-dropdown" data-value="Denmark +45"><span data-show-in-selection="false" style="margin-right: 10px;">Denmark</span><span data-show-in-selection="true" style="margin-right: 10px;">+45</span></span></div><div class="option" iso="dj"><span class="icon-text-dropdown" data-value="Djibouti +253"><span data-show-in-selection="false" style="margin-right: 10px;">Djibouti</span><span data-show-in-selection="true" style="margin-right: 10px;">+253</span></span></div><div class="option" iso="dm"><span class="icon-text-dropdown" data-value="Dominica +1767"><span data-show-in-selection="false" style="margin-right: 10px;">Dominica</span><span data-show-in-selection="true" style="margin-right: 10px;">+1767</span></span></div><div class="option" iso="do"><span class="icon-text-dropdown" data-value="Dominican Republic +1"><span data-show-in-selection="false" style="margin-right: 10px;">Dominican Republic</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso="ec"><span class="icon-text-dropdown" data-value="Ecuador +593"><span data-show-in-selection="false" style="margin-right: 10px;">Ecuador</span><span data-show-in-selection="true" style="margin-right: 10px;">+593</span></span></div><div class="option" iso="eg"><span class="icon-text-dropdown" data-value="Egypt +20"><span data-show-in-selection="false" style="margin-right: 10px;">Egypt</span><span data-show-in-selection="true" style="margin-right: 10px;">+20</span></span></div><div class="option" iso="sv"><span class="icon-text-dropdown" data-value="El Salvador +503"><span data-show-in-selection="false" style="margin-right: 10px;">El Salvador</span><span data-show-in-selection="true" style="margin-right: 10px;">+503</span></span></div><div class="option" iso="gq"><span class="icon-text-dropdown" data-value="Equatorial Guinea +240"><span data-show-in-selection="false" style="margin-right: 10px;">Equatorial Guinea</span><span data-show-in-selection="true" style="margin-right: 10px;">+240</span></span></div><div class="option" iso="er"><span class="icon-text-dropdown" data-value="Eritrea +291"><span data-show-in-selection="false" style="margin-right: 10px;">Eritrea</span><span data-show-in-selection="true" style="margin-right: 10px;">+291</span></span></div><div class="option" iso="ee"><span class="icon-text-dropdown" data-value="Estonia +372"><span data-show-in-selection="false" style="margin-right: 10px;">Estonia</span><span data-show-in-selection="true" style="margin-right: 10px;">+372</span></span></div><div class="option" iso="et"><span class="icon-text-dropdown" data-value="Ethiopia +251"><span data-show-in-selection="false" style="margin-right: 10px;">Ethiopia</span><span data-show-in-selection="true" style="margin-right: 10px;">+251</span></span></div><div class="option" iso="fk"><span class="icon-text-dropdown" data-value="Falkland Islands +500"><span data-show-in-selection="false" style="margin-right: 10px;">Falkland Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+500</span></span></div><div class="option" iso="fo"><span class="icon-text-dropdown" data-value="Faroe Islands +298"><span data-show-in-selection="false" style="margin-right: 10px;">Faroe Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+298</span></span></div><div class="option" iso="fj"><span class="icon-text-dropdown" data-value="Fiji +679"><span data-show-in-selection="false" style="margin-right: 10px;">Fiji</span><span data-show-in-selection="true" style="margin-right: 10px;">+679</span></span></div><div class="option" iso="fi"><span class="icon-text-dropdown" data-value="Finland +358"><span data-show-in-selection="false" style="margin-right: 10px;">Finland</span><span data-show-in-selection="true" style="margin-right: 10px;">+358</span></span></div><div class="option" iso="fr"><span class="icon-text-dropdown" data-value="France +33"><span data-show-in-selection="false" style="margin-right: 10px;">France</span><span data-show-in-selection="true" style="margin-right: 10px;">+33</span></span></div><div class="option" iso="gf"><span class="icon-text-dropdown" data-value="French Guiana +594"><span data-show-in-selection="false" style="margin-right: 10px;">French Guiana</span><span data-show-in-selection="true" style="margin-right: 10px;">+594</span></span></div><div class="option" iso="pf"><span class="icon-text-dropdown" data-value="French Polynesia +689"><span data-show-in-selection="false" style="margin-right: 10px;">French Polynesia</span><span data-show-in-selection="true" style="margin-right: 10px;">+689</span></span></div><div class="option" iso="tf"><span class="icon-text-dropdown" data-value="French Southern Territories +262"><span data-show-in-selection="false" style="margin-right: 10px;">French Southern Territories</span><span data-show-in-selection="true" style="margin-right: 10px;">+262</span></span></div><div class="option" iso="ga"><span class="icon-text-dropdown" data-value="Gabon +241"><span data-show-in-selection="false" style="margin-right: 10px;">Gabon</span><span data-show-in-selection="true" style="margin-right: 10px;">+241</span></span></div><div class="option" iso="gm"><span class="icon-text-dropdown" data-value="Gambia +220"><span data-show-in-selection="false" style="margin-right: 10px;">Gambia</span><span data-show-in-selection="true" style="margin-right: 10px;">+220</span></span></div><div class="option" iso="ge"><span class="icon-text-dropdown" data-value="Georgia +995"><span data-show-in-selection="false" style="margin-right: 10px;">Georgia</span><span data-show-in-selection="true" style="margin-right: 10px;">+995</span></span></div><div class="option" iso="de"><span class="icon-text-dropdown" data-value="Germany +49"><span data-show-in-selection="false" style="margin-right: 10px;">Germany</span><span data-show-in-selection="true" style="margin-right: 10px;">+49</span></span></div><div class="option" iso="gh"><span class="icon-text-dropdown" data-value="Ghana +233"><span data-show-in-selection="false" style="margin-right: 10px;">Ghana</span><span data-show-in-selection="true" style="margin-right: 10px;">+233</span></span></div><div class="option" iso="gi"><span class="icon-text-dropdown" data-value="Gibraltar +350"><span data-show-in-selection="false" style="margin-right: 10px;">Gibraltar</span><span data-show-in-selection="true" style="margin-right: 10px;">+350</span></span></div><div class="option" iso="gr"><span class="icon-text-dropdown" data-value="Greece +30"><span data-show-in-selection="false" style="margin-right: 10px;">Greece</span><span data-show-in-selection="true" style="margin-right: 10px;">+30</span></span></div><div class="option" iso="gl"><span class="icon-text-dropdown" data-value="Greenland +299"><span data-show-in-selection="false" style="margin-right: 10px;">Greenland</span><span data-show-in-selection="true" style="margin-right: 10px;">+299</span></span></div><div class="option" iso="gd"><span class="icon-text-dropdown" data-value="Grenada +1473"><span data-show-in-selection="false" style="margin-right: 10px;">Grenada</span><span data-show-in-selection="true" style="margin-right: 10px;">+1473</span></span></div><div class="option" iso="gp"><span class="icon-text-dropdown" data-value="Guadeloupe +590"><span data-show-in-selection="false" style="margin-right: 10px;">Guadeloupe</span><span data-show-in-selection="true" style="margin-right: 10px;">+590</span></span></div><div class="option" iso="gu"><span class="icon-text-dropdown" data-value="Guam +1671"><span data-show-in-selection="false" style="margin-right: 10px;">Guam</span><span data-show-in-selection="true" style="margin-right: 10px;">+1671</span></span></div><div class="option" iso="gt"><span class="icon-text-dropdown" data-value="Guatemala +502"><span data-show-in-selection="false" style="margin-right: 10px;">Guatemala</span><span data-show-in-selection="true" style="margin-right: 10px;">+502</span></span></div><div class="option" iso="gg"><span class="icon-text-dropdown" data-value="Guernsey +44"><span data-show-in-selection="false" style="margin-right: 10px;">Guernsey</span><span data-show-in-selection="true" style="margin-right: 10px;">+44</span></span></div><div class="option" iso="gn"><span class="icon-text-dropdown" data-value="Guinea +224"><span data-show-in-selection="false" style="margin-right: 10px;">Guinea</span><span data-show-in-selection="true" style="margin-right: 10px;">+224</span></span></div><div class="option" iso="gw"><span class="icon-text-dropdown" data-value="Guinea-Bissau +245"><span data-show-in-selection="false" style="margin-right: 10px;">Guinea-Bissau</span><span data-show-in-selection="true" style="margin-right: 10px;">+245</span></span></div><div class="option" iso="gy"><span class="icon-text-dropdown" data-value="Guyana +592"><span data-show-in-selection="false" style="margin-right: 10px;">Guyana</span><span data-show-in-selection="true" style="margin-right: 10px;">+592</span></span></div><div class="option" iso="ht"><span class="icon-text-dropdown" data-value="Haiti +509"><span data-show-in-selection="false" style="margin-right: 10px;">Haiti</span><span data-show-in-selection="true" style="margin-right: 10px;">+509</span></span></div><div class="option" iso="hm"><span class="icon-text-dropdown" data-value="Heard &amp; McDonald Islands +672"><span data-show-in-selection="false" style="margin-right: 10px;">Heard &amp; McDonald Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+672</span></span></div><div class="option" iso="hn"><span class="icon-text-dropdown" data-value="Honduras +504"><span data-show-in-selection="false" style="margin-right: 10px;">Honduras</span><span data-show-in-selection="true" style="margin-right: 10px;">+504</span></span></div><div class="option" iso="hk"><span class="icon-text-dropdown" data-value="Hong Kong +852"><span data-show-in-selection="false" style="margin-right: 10px;">Hong Kong</span><span data-show-in-selection="true" style="margin-right: 10px;">+852</span></span></div><div class="option" iso="hu"><span class="icon-text-dropdown" data-value="Hungary +36"><span data-show-in-selection="false" style="margin-right: 10px;">Hungary</span><span data-show-in-selection="true" style="margin-right: 10px;">+36</span></span></div><div class="option" iso="is"><span class="icon-text-dropdown" data-value="Iceland +354"><span data-show-in-selection="false" style="margin-right: 10px;">Iceland</span><span data-show-in-selection="true" style="margin-right: 10px;">+354</span></span></div><div class="option" iso="in" data-selected="true"><span class="icon-text-dropdown" data-value="India +91"><span data-show-in-selection="false" style="margin-right: 10px;">India</span><span data-show-in-selection="true" style="margin-right: 10px;">+91</span></span></div><div class="option" iso="id"><span class="icon-text-dropdown" data-value="Indonesia +62"><span data-show-in-selection="false" style="margin-right: 10px;">Indonesia</span><span data-show-in-selection="true" style="margin-right: 10px;">+62</span></span></div><div class="option" iso="ir"><span class="icon-text-dropdown" data-value="Iran +98"><span data-show-in-selection="false" style="margin-right: 10px;">Iran</span><span data-show-in-selection="true" style="margin-right: 10px;">+98</span></span></div><div class="option" iso="iq"><span class="icon-text-dropdown" data-value="Iraq +964"><span data-show-in-selection="false" style="margin-right: 10px;">Iraq</span><span data-show-in-selection="true" style="margin-right: 10px;">+964</span></span></div><div class="option" iso="ie"><span class="icon-text-dropdown" data-value="Ireland +353"><span data-show-in-selection="false" style="margin-right: 10px;">Ireland</span><span data-show-in-selection="true" style="margin-right: 10px;">+353</span></span></div><div class="option" iso="im"><span class="icon-text-dropdown" data-value="Isle of Man +44"><span data-show-in-selection="false" style="margin-right: 10px;">Isle of Man</span><span data-show-in-selection="true" style="margin-right: 10px;">+44</span></span></div><div class="option" iso="il"><span class="icon-text-dropdown" data-value="Israel +972"><span data-show-in-selection="false" style="margin-right: 10px;">Israel</span><span data-show-in-selection="true" style="margin-right: 10px;">+972</span></span></div><div class="option" iso="it"><span class="icon-text-dropdown" data-value="Italy +39"><span data-show-in-selection="false" style="margin-right: 10px;">Italy</span><span data-show-in-selection="true" style="margin-right: 10px;">+39</span></span></div><div class="option" iso="jm"><span class="icon-text-dropdown" data-value="Jamaica +1876"><span data-show-in-selection="false" style="margin-right: 10px;">Jamaica</span><span data-show-in-selection="true" style="margin-right: 10px;">+1876</span></span></div><div class="option" iso="jp"><span class="icon-text-dropdown" data-value="Japan +81"><span data-show-in-selection="false" style="margin-right: 10px;">Japan</span><span data-show-in-selection="true" style="margin-right: 10px;">+81</span></span></div><div class="option" iso="je"><span class="icon-text-dropdown" data-value="Jersey +44"><span data-show-in-selection="false" style="margin-right: 10px;">Jersey</span><span data-show-in-selection="true" style="margin-right: 10px;">+44</span></span></div><div class="option" iso="jo"><span class="icon-text-dropdown" data-value="Jordan +962"><span data-show-in-selection="false" style="margin-right: 10px;">Jordan</span><span data-show-in-selection="true" style="margin-right: 10px;">+962</span></span></div><div class="option" iso="kz"><span class="icon-text-dropdown" data-value="Kazakhstan +7"><span data-show-in-selection="false" style="margin-right: 10px;">Kazakhstan</span><span data-show-in-selection="true" style="margin-right: 10px;">+7</span></span></div><div class="option" iso="ke"><span class="icon-text-dropdown" data-value="Kenya +254"><span data-show-in-selection="false" style="margin-right: 10px;">Kenya</span><span data-show-in-selection="true" style="margin-right: 10px;">+254</span></span></div><div class="option" iso="ki"><span class="icon-text-dropdown" data-value="Kiribati +686"><span data-show-in-selection="false" style="margin-right: 10px;">Kiribati</span><span data-show-in-selection="true" style="margin-right: 10px;">+686</span></span></div><div class="option" iso="xk"><span class="icon-text-dropdown" data-value="Kosovo +383"><span data-show-in-selection="false" style="margin-right: 10px;">Kosovo</span><span data-show-in-selection="true" style="margin-right: 10px;">+383</span></span></div><div class="option" iso="kw"><span class="icon-text-dropdown" data-value="Kuwait +965"><span data-show-in-selection="false" style="margin-right: 10px;">Kuwait</span><span data-show-in-selection="true" style="margin-right: 10px;">+965</span></span></div><div class="option" iso="kg"><span class="icon-text-dropdown" data-value="Kyrgyzstan +996"><span data-show-in-selection="false" style="margin-right: 10px;">Kyrgyzstan</span><span data-show-in-selection="true" style="margin-right: 10px;">+996</span></span></div><div class="option" iso="la"><span class="icon-text-dropdown" data-value="Laos +856"><span data-show-in-selection="false" style="margin-right: 10px;">Laos</span><span data-show-in-selection="true" style="margin-right: 10px;">+856</span></span></div><div class="option" iso="lv"><span class="icon-text-dropdown" data-value="Latvia +371"><span data-show-in-selection="false" style="margin-right: 10px;">Latvia</span><span data-show-in-selection="true" style="margin-right: 10px;">+371</span></span></div><div class="option" iso="lb"><span class="icon-text-dropdown" data-value="Lebanon +961"><span data-show-in-selection="false" style="margin-right: 10px;">Lebanon</span><span data-show-in-selection="true" style="margin-right: 10px;">+961</span></span></div><div class="option" iso="ls"><span class="icon-text-dropdown" data-value="Lesotho +266"><span data-show-in-selection="false" style="margin-right: 10px;">Lesotho</span><span data-show-in-selection="true" style="margin-right: 10px;">+266</span></span></div><div class="option" iso="lr"><span class="icon-text-dropdown" data-value="Liberia +231"><span data-show-in-selection="false" style="margin-right: 10px;">Liberia</span><span data-show-in-selection="true" style="margin-right: 10px;">+231</span></span></div><div class="option" iso="ly"><span class="icon-text-dropdown" data-value="Libya +218"><span data-show-in-selection="false" style="margin-right: 10px;">Libya</span><span data-show-in-selection="true" style="margin-right: 10px;">+218</span></span></div><div class="option" iso="li"><span class="icon-text-dropdown" data-value="Liechtenstein +423"><span data-show-in-selection="false" style="margin-right: 10px;">Liechtenstein</span><span data-show-in-selection="true" style="margin-right: 10px;">+423</span></span></div><div class="option" iso="lt"><span class="icon-text-dropdown" data-value="Lithuania +370"><span data-show-in-selection="false" style="margin-right: 10px;">Lithuania</span><span data-show-in-selection="true" style="margin-right: 10px;">+370</span></span></div><div class="option" iso="lu"><span class="icon-text-dropdown" data-value="Luxembourg +352"><span data-show-in-selection="false" style="margin-right: 10px;">Luxembourg</span><span data-show-in-selection="true" style="margin-right: 10px;">+352</span></span></div><div class="option" iso="mo"><span class="icon-text-dropdown" data-value="Macao +853"><span data-show-in-selection="false" style="margin-right: 10px;">Macao</span><span data-show-in-selection="true" style="margin-right: 10px;">+853</span></span></div><div class="option" iso="mk"><span class="icon-text-dropdown" data-value="Macedonia +389"><span data-show-in-selection="false" style="margin-right: 10px;">Macedonia</span><span data-show-in-selection="true" style="margin-right: 10px;">+389</span></span></div><div class="option" iso="mg"><span class="icon-text-dropdown" data-value="Madagascar +261"><span data-show-in-selection="false" style="margin-right: 10px;">Madagascar</span><span data-show-in-selection="true" style="margin-right: 10px;">+261</span></span></div><div class="option" iso="mw"><span class="icon-text-dropdown" data-value="Malawi +265"><span data-show-in-selection="false" style="margin-right: 10px;">Malawi</span><span data-show-in-selection="true" style="margin-right: 10px;">+265</span></span></div><div class="option" iso="my"><span class="icon-text-dropdown" data-value="Malaysia +60"><span data-show-in-selection="false" style="margin-right: 10px;">Malaysia</span><span data-show-in-selection="true" style="margin-right: 10px;">+60</span></span></div><div class="option" iso="mv"><span class="icon-text-dropdown" data-value="Maldives +960"><span data-show-in-selection="false" style="margin-right: 10px;">Maldives</span><span data-show-in-selection="true" style="margin-right: 10px;">+960</span></span></div><div class="option" iso="ml"><span class="icon-text-dropdown" data-value="Mali +223"><span data-show-in-selection="false" style="margin-right: 10px;">Mali</span><span data-show-in-selection="true" style="margin-right: 10px;">+223</span></span></div><div class="option" iso="mt"><span class="icon-text-dropdown" data-value="Malta +356"><span data-show-in-selection="false" style="margin-right: 10px;">Malta</span><span data-show-in-selection="true" style="margin-right: 10px;">+356</span></span></div><div class="option" iso="mh"><span class="icon-text-dropdown" data-value="Marshall Islands +692"><span data-show-in-selection="false" style="margin-right: 10px;">Marshall Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+692</span></span></div><div class="option" iso="mq"><span class="icon-text-dropdown" data-value="Martinique +596"><span data-show-in-selection="false" style="margin-right: 10px;">Martinique</span><span data-show-in-selection="true" style="margin-right: 10px;">+596</span></span></div><div class="option" iso="mr"><span class="icon-text-dropdown" data-value="Mauritania +222"><span data-show-in-selection="false" style="margin-right: 10px;">Mauritania</span><span data-show-in-selection="true" style="margin-right: 10px;">+222</span></span></div><div class="option" iso="mu"><span class="icon-text-dropdown" data-value="Mauritius +230"><span data-show-in-selection="false" style="margin-right: 10px;">Mauritius</span><span data-show-in-selection="true" style="margin-right: 10px;">+230</span></span></div><div class="option" iso="yt"><span class="icon-text-dropdown" data-value="Mayotte +262"><span data-show-in-selection="false" style="margin-right: 10px;">Mayotte</span><span data-show-in-selection="true" style="margin-right: 10px;">+262</span></span></div><div class="option" iso="mx"><span class="icon-text-dropdown" data-value="Mexico +52"><span data-show-in-selection="false" style="margin-right: 10px;">Mexico</span><span data-show-in-selection="true" style="margin-right: 10px;">+52</span></span></div><div class="option" iso="fm"><span class="icon-text-dropdown" data-value="Micronesia +691"><span data-show-in-selection="false" style="margin-right: 10px;">Micronesia</span><span data-show-in-selection="true" style="margin-right: 10px;">+691</span></span></div><div class="option" iso="md"><span class="icon-text-dropdown" data-value="Moldova +373"><span data-show-in-selection="false" style="margin-right: 10px;">Moldova</span><span data-show-in-selection="true" style="margin-right: 10px;">+373</span></span></div><div class="option" iso="mc"><span class="icon-text-dropdown" data-value="Monaco +377"><span data-show-in-selection="false" style="margin-right: 10px;">Monaco</span><span data-show-in-selection="true" style="margin-right: 10px;">+377</span></span></div><div class="option" iso="mn"><span class="icon-text-dropdown" data-value="Mongolia +976"><span data-show-in-selection="false" style="margin-right: 10px;">Mongolia</span><span data-show-in-selection="true" style="margin-right: 10px;">+976</span></span></div><div class="option" iso="me"><span class="icon-text-dropdown" data-value="Montenegro +382"><span data-show-in-selection="false" style="margin-right: 10px;">Montenegro</span><span data-show-in-selection="true" style="margin-right: 10px;">+382</span></span></div><div class="option" iso="ms"><span class="icon-text-dropdown" data-value="Montserrat +1664"><span data-show-in-selection="false" style="margin-right: 10px;">Montserrat</span><span data-show-in-selection="true" style="margin-right: 10px;">+1664</span></span></div><div class="option" iso="ma"><span class="icon-text-dropdown" data-value="Morocco +212"><span data-show-in-selection="false" style="margin-right: 10px;">Morocco</span><span data-show-in-selection="true" style="margin-right: 10px;">+212</span></span></div><div class="option" iso="mz"><span class="icon-text-dropdown" data-value="Mozambique +258"><span data-show-in-selection="false" style="margin-right: 10px;">Mozambique</span><span data-show-in-selection="true" style="margin-right: 10px;">+258</span></span></div><div class="option" iso="mm"><span class="icon-text-dropdown" data-value="Myanmar (Burma) +95"><span data-show-in-selection="false" style="margin-right: 10px;">Myanmar (Burma)</span><span data-show-in-selection="true" style="margin-right: 10px;">+95</span></span></div><div class="option" iso="na"><span class="icon-text-dropdown" data-value="Namibia +264"><span data-show-in-selection="false" style="margin-right: 10px;">Namibia</span><span data-show-in-selection="true" style="margin-right: 10px;">+264</span></span></div><div class="option" iso="nr"><span class="icon-text-dropdown" data-value="Nauru +674"><span data-show-in-selection="false" style="margin-right: 10px;">Nauru</span><span data-show-in-selection="true" style="margin-right: 10px;">+674</span></span></div><div class="option" iso="np"><span class="icon-text-dropdown" data-value="Nepal +977"><span data-show-in-selection="false" style="margin-right: 10px;">Nepal</span><span data-show-in-selection="true" style="margin-right: 10px;">+977</span></span></div><div class="option" iso="nl"><span class="icon-text-dropdown" data-value="Netherlands +31"><span data-show-in-selection="false" style="margin-right: 10px;">Netherlands</span><span data-show-in-selection="true" style="margin-right: 10px;">+31</span></span></div><div class="option" iso="nc"><span class="icon-text-dropdown" data-value="New Caledonia +687"><span data-show-in-selection="false" style="margin-right: 10px;">New Caledonia</span><span data-show-in-selection="true" style="margin-right: 10px;">+687</span></span></div><div class="option" iso="nz"><span class="icon-text-dropdown" data-value="New Zealand +64"><span data-show-in-selection="false" style="margin-right: 10px;">New Zealand</span><span data-show-in-selection="true" style="margin-right: 10px;">+64</span></span></div><div class="option" iso="ni"><span class="icon-text-dropdown" data-value="Nicaragua +505"><span data-show-in-selection="false" style="margin-right: 10px;">Nicaragua</span><span data-show-in-selection="true" style="margin-right: 10px;">+505</span></span></div><div class="option" iso="ne"><span class="icon-text-dropdown" data-value="Niger +227"><span data-show-in-selection="false" style="margin-right: 10px;">Niger</span><span data-show-in-selection="true" style="margin-right: 10px;">+227</span></span></div><div class="option" iso="ng"><span class="icon-text-dropdown" data-value="Nigeria +234"><span data-show-in-selection="false" style="margin-right: 10px;">Nigeria</span><span data-show-in-selection="true" style="margin-right: 10px;">+234</span></span></div><div class="option" iso="nu"><span class="icon-text-dropdown" data-value="Niue +683"><span data-show-in-selection="false" style="margin-right: 10px;">Niue</span><span data-show-in-selection="true" style="margin-right: 10px;">+683</span></span></div><div class="option" iso="nf"><span class="icon-text-dropdown" data-value="Norfolk Island +672"><span data-show-in-selection="false" style="margin-right: 10px;">Norfolk Island</span><span data-show-in-selection="true" style="margin-right: 10px;">+672</span></span></div><div class="option" iso="kp"><span class="icon-text-dropdown" data-value="North Korea +850"><span data-show-in-selection="false" style="margin-right: 10px;">North Korea</span><span data-show-in-selection="true" style="margin-right: 10px;">+850</span></span></div><div class="option" iso="mp"><span class="icon-text-dropdown" data-value="Northern Mariana Islands +1670"><span data-show-in-selection="false" style="margin-right: 10px;">Northern Mariana Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1670</span></span></div><div class="option" iso="no"><span class="icon-text-dropdown" data-value="Norway +47"><span data-show-in-selection="false" style="margin-right: 10px;">Norway</span><span data-show-in-selection="true" style="margin-right: 10px;">+47</span></span></div><div class="option" iso="om"><span class="icon-text-dropdown" data-value="Oman +968"><span data-show-in-selection="false" style="margin-right: 10px;">Oman</span><span data-show-in-selection="true" style="margin-right: 10px;">+968</span></span></div><div class="option" iso="pk"><span class="icon-text-dropdown" data-value="Pakistan +92"><span data-show-in-selection="false" style="margin-right: 10px;">Pakistan</span><span data-show-in-selection="true" style="margin-right: 10px;">+92</span></span></div><div class="option" iso="pw"><span class="icon-text-dropdown" data-value="Palau +680"><span data-show-in-selection="false" style="margin-right: 10px;">Palau</span><span data-show-in-selection="true" style="margin-right: 10px;">+680</span></span></div><div class="option" iso="ps"><span class="icon-text-dropdown" data-value="Palestinian Territories +970"><span data-show-in-selection="false" style="margin-right: 10px;">Palestinian Territories</span><span data-show-in-selection="true" style="margin-right: 10px;">+970</span></span></div><div class="option" iso="pa"><span class="icon-text-dropdown" data-value="Panama +507"><span data-show-in-selection="false" style="margin-right: 10px;">Panama</span><span data-show-in-selection="true" style="margin-right: 10px;">+507</span></span></div><div class="option" iso="pg"><span class="icon-text-dropdown" data-value="Papua New Guinea +675"><span data-show-in-selection="false" style="margin-right: 10px;">Papua New Guinea</span><span data-show-in-selection="true" style="margin-right: 10px;">+675</span></span></div><div class="option" iso="py"><span class="icon-text-dropdown" data-value="Paraguay +595"><span data-show-in-selection="false" style="margin-right: 10px;">Paraguay</span><span data-show-in-selection="true" style="margin-right: 10px;">+595</span></span></div><div class="option" iso="pe"><span class="icon-text-dropdown" data-value="Peru +51"><span data-show-in-selection="false" style="margin-right: 10px;">Peru</span><span data-show-in-selection="true" style="margin-right: 10px;">+51</span></span></div><div class="option" iso="ph"><span class="icon-text-dropdown" data-value="Philippines +63"><span data-show-in-selection="false" style="margin-right: 10px;">Philippines</span><span data-show-in-selection="true" style="margin-right: 10px;">+63</span></span></div><div class="option" iso="pn"><span class="icon-text-dropdown" data-value="Pitcairn Islands +64"><span data-show-in-selection="false" style="margin-right: 10px;">Pitcairn Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+64</span></span></div><div class="option" iso="pl"><span class="icon-text-dropdown" data-value="Poland +48"><span data-show-in-selection="false" style="margin-right: 10px;">Poland</span><span data-show-in-selection="true" style="margin-right: 10px;">+48</span></span></div><div class="option" iso="pt"><span class="icon-text-dropdown" data-value="Portugal +351"><span data-show-in-selection="false" style="margin-right: 10px;">Portugal</span><span data-show-in-selection="true" style="margin-right: 10px;">+351</span></span></div><div class="option" iso="pr"><span class="icon-text-dropdown" data-value="Puerto Rico +1"><span data-show-in-selection="false" style="margin-right: 10px;">Puerto Rico</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso="qa"><span class="icon-text-dropdown" data-value="Qatar +974"><span data-show-in-selection="false" style="margin-right: 10px;">Qatar</span><span data-show-in-selection="true" style="margin-right: 10px;">+974</span></span></div><div class="option" iso="ro"><span class="icon-text-dropdown" data-value="Romania +40"><span data-show-in-selection="false" style="margin-right: 10px;">Romania</span><span data-show-in-selection="true" style="margin-right: 10px;">+40</span></span></div><div class="option" iso="ru"><span class="icon-text-dropdown" data-value="Russia +7"><span data-show-in-selection="false" style="margin-right: 10px;">Russia</span><span data-show-in-selection="true" style="margin-right: 10px;">+7</span></span></div><div class="option" iso="rw"><span class="icon-text-dropdown" data-value="Rwanda +250"><span data-show-in-selection="false" style="margin-right: 10px;">Rwanda</span><span data-show-in-selection="true" style="margin-right: 10px;">+250</span></span></div><div class="option" iso="re"><span class="icon-text-dropdown" data-value="Réunion +262"><span data-show-in-selection="false" style="margin-right: 10px;">Réunion</span><span data-show-in-selection="true" style="margin-right: 10px;">+262</span></span></div><div class="option" iso="ws"><span class="icon-text-dropdown" data-value="Samoa +685"><span data-show-in-selection="false" style="margin-right: 10px;">Samoa</span><span data-show-in-selection="true" style="margin-right: 10px;">+685</span></span></div><div class="option" iso="sm"><span class="icon-text-dropdown" data-value="San Marino +378"><span data-show-in-selection="false" style="margin-right: 10px;">San Marino</span><span data-show-in-selection="true" style="margin-right: 10px;">+378</span></span></div><div class="option" iso="sa"><span class="icon-text-dropdown" data-value="Saudi Arabia +966"><span data-show-in-selection="false" style="margin-right: 10px;">Saudi Arabia</span><span data-show-in-selection="true" style="margin-right: 10px;">+966</span></span></div><div class="option" iso="sn"><span class="icon-text-dropdown" data-value="Senegal +221"><span data-show-in-selection="false" style="margin-right: 10px;">Senegal</span><span data-show-in-selection="true" style="margin-right: 10px;">+221</span></span></div><div class="option" iso="rs"><span class="icon-text-dropdown" data-value="Serbia +381"><span data-show-in-selection="false" style="margin-right: 10px;">Serbia</span><span data-show-in-selection="true" style="margin-right: 10px;">+381</span></span></div><div class="option" iso="sc"><span class="icon-text-dropdown" data-value="Seychelles +248"><span data-show-in-selection="false" style="margin-right: 10px;">Seychelles</span><span data-show-in-selection="true" style="margin-right: 10px;">+248</span></span></div><div class="option" iso="sl"><span class="icon-text-dropdown" data-value="Sierra Leone +232"><span data-show-in-selection="false" style="margin-right: 10px;">Sierra Leone</span><span data-show-in-selection="true" style="margin-right: 10px;">+232</span></span></div><div class="option" iso="sg"><span class="icon-text-dropdown" data-value="Singapore +65"><span data-show-in-selection="false" style="margin-right: 10px;">Singapore</span><span data-show-in-selection="true" style="margin-right: 10px;">+65</span></span></div><div class="option" iso="sx"><span class="icon-text-dropdown" data-value="Sint Maarten +1721"><span data-show-in-selection="false" style="margin-right: 10px;">Sint Maarten</span><span data-show-in-selection="true" style="margin-right: 10px;">+1721</span></span></div><div class="option" iso="sk"><span class="icon-text-dropdown" data-value="Slovakia +421"><span data-show-in-selection="false" style="margin-right: 10px;">Slovakia</span><span data-show-in-selection="true" style="margin-right: 10px;">+421</span></span></div><div class="option" iso="si"><span class="icon-text-dropdown" data-value="Slovenia +386"><span data-show-in-selection="false" style="margin-right: 10px;">Slovenia</span><span data-show-in-selection="true" style="margin-right: 10px;">+386</span></span></div><div class="option" iso="sb"><span class="icon-text-dropdown" data-value="Solomon Islands +677"><span data-show-in-selection="false" style="margin-right: 10px;">Solomon Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+677</span></span></div><div class="option" iso="so"><span class="icon-text-dropdown" data-value="Somalia +252"><span data-show-in-selection="false" style="margin-right: 10px;">Somalia</span><span data-show-in-selection="true" style="margin-right: 10px;">+252</span></span></div><div class="option" iso="za"><span class="icon-text-dropdown" data-value="South Africa +27"><span data-show-in-selection="false" style="margin-right: 10px;">South Africa</span><span data-show-in-selection="true" style="margin-right: 10px;">+27</span></span></div><div class="option" iso="gs"><span class="icon-text-dropdown" data-value="South Georgia &amp; South Sandwich Islands +500"><span data-show-in-selection="false" style="margin-right: 10px;">South Georgia &amp; South Sandwich Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+500</span></span></div><div class="option" iso="kr"><span class="icon-text-dropdown" data-value="South Korea +82"><span data-show-in-selection="false" style="margin-right: 10px;">South Korea</span><span data-show-in-selection="true" style="margin-right: 10px;">+82</span></span></div><div class="option" iso="ss"><span class="icon-text-dropdown" data-value="South Sudan +211"><span data-show-in-selection="false" style="margin-right: 10px;">South Sudan</span><span data-show-in-selection="true" style="margin-right: 10px;">+211</span></span></div><div class="option" iso="es"><span class="icon-text-dropdown" data-value="Spain +34"><span data-show-in-selection="false" style="margin-right: 10px;">Spain</span><span data-show-in-selection="true" style="margin-right: 10px;">+34</span></span></div><div class="option" iso="lk"><span class="icon-text-dropdown" data-value="Sri Lanka +94"><span data-show-in-selection="false" style="margin-right: 10px;">Sri Lanka</span><span data-show-in-selection="true" style="margin-right: 10px;">+94</span></span></div><div class="option" iso="bl"><span class="icon-text-dropdown" data-value="St Barthélemy +590"><span data-show-in-selection="false" style="margin-right: 10px;">St Barthélemy</span><span data-show-in-selection="true" style="margin-right: 10px;">+590</span></span></div><div class="option" iso="sh"><span class="icon-text-dropdown" data-value="St Helena +290"><span data-show-in-selection="false" style="margin-right: 10px;">St Helena</span><span data-show-in-selection="true" style="margin-right: 10px;">+290</span></span></div><div class="option" iso="kn"><span class="icon-text-dropdown" data-value="St Kitts &amp; Nevis +1869"><span data-show-in-selection="false" style="margin-right: 10px;">St Kitts &amp; Nevis</span><span data-show-in-selection="true" style="margin-right: 10px;">+1869</span></span></div><div class="option" iso="lc"><span class="icon-text-dropdown" data-value="St Lucia +1758"><span data-show-in-selection="false" style="margin-right: 10px;">St Lucia</span><span data-show-in-selection="true" style="margin-right: 10px;">+1758</span></span></div><div class="option" iso="mf"><span class="icon-text-dropdown" data-value="St Martin +590"><span data-show-in-selection="false" style="margin-right: 10px;">St Martin</span><span data-show-in-selection="true" style="margin-right: 10px;">+590</span></span></div><div class="option" iso="pm"><span class="icon-text-dropdown" data-value="St Pierre &amp; Miquelon +508"><span data-show-in-selection="false" style="margin-right: 10px;">St Pierre &amp; Miquelon</span><span data-show-in-selection="true" style="margin-right: 10px;">+508</span></span></div><div class="option" iso="vc"><span class="icon-text-dropdown" data-value="St Vincent &amp; Grenadines +1784"><span data-show-in-selection="false" style="margin-right: 10px;">St Vincent &amp; Grenadines</span><span data-show-in-selection="true" style="margin-right: 10px;">+1784</span></span></div><div class="option" iso="sd"><span class="icon-text-dropdown" data-value="Sudan +249"><span data-show-in-selection="false" style="margin-right: 10px;">Sudan</span><span data-show-in-selection="true" style="margin-right: 10px;">+249</span></span></div><div class="option" iso="sr"><span class="icon-text-dropdown" data-value="Suriname +597"><span data-show-in-selection="false" style="margin-right: 10px;">Suriname</span><span data-show-in-selection="true" style="margin-right: 10px;">+597</span></span></div><div class="option" iso="sj"><span class="icon-text-dropdown" data-value="Svalbard &amp; Jan Mayen +47"><span data-show-in-selection="false" style="margin-right: 10px;">Svalbard &amp; Jan Mayen</span><span data-show-in-selection="true" style="margin-right: 10px;">+47</span></span></div><div class="option" iso="sz"><span class="icon-text-dropdown" data-value="Swaziland +268"><span data-show-in-selection="false" style="margin-right: 10px;">Swaziland</span><span data-show-in-selection="true" style="margin-right: 10px;">+268</span></span></div><div class="option" iso="se"><span class="icon-text-dropdown" data-value="Sweden +46"><span data-show-in-selection="false" style="margin-right: 10px;">Sweden</span><span data-show-in-selection="true" style="margin-right: 10px;">+46</span></span></div><div class="option" iso="ch"><span class="icon-text-dropdown" data-value="Switzerland +41"><span data-show-in-selection="false" style="margin-right: 10px;">Switzerland</span><span data-show-in-selection="true" style="margin-right: 10px;">+41</span></span></div><div class="option" iso="sy"><span class="icon-text-dropdown" data-value="Syria +963"><span data-show-in-selection="false" style="margin-right: 10px;">Syria</span><span data-show-in-selection="true" style="margin-right: 10px;">+963</span></span></div><div class="option" iso="st"><span class="icon-text-dropdown" data-value="São Tomé &amp; Príncipe +239"><span data-show-in-selection="false" style="margin-right: 10px;">São Tomé &amp; Príncipe</span><span data-show-in-selection="true" style="margin-right: 10px;">+239</span></span></div><div class="option" iso="tw"><span class="icon-text-dropdown" data-value="Taiwan +886"><span data-show-in-selection="false" style="margin-right: 10px;">Taiwan</span><span data-show-in-selection="true" style="margin-right: 10px;">+886</span></span></div><div class="option" iso="tj"><span class="icon-text-dropdown" data-value="Tajikistan +992"><span data-show-in-selection="false" style="margin-right: 10px;">Tajikistan</span><span data-show-in-selection="true" style="margin-right: 10px;">+992</span></span></div><div class="option" iso="tz"><span class="icon-text-dropdown" data-value="Tanzania +255"><span data-show-in-selection="false" style="margin-right: 10px;">Tanzania</span><span data-show-in-selection="true" style="margin-right: 10px;">+255</span></span></div><div class="option" iso="th"><span class="icon-text-dropdown" data-value="Thailand +66"><span data-show-in-selection="false" style="margin-right: 10px;">Thailand</span><span data-show-in-selection="true" style="margin-right: 10px;">+66</span></span></div><div class="option" iso="tl"><span class="icon-text-dropdown" data-value="Timor-Leste +670"><span data-show-in-selection="false" style="margin-right: 10px;">Timor-Leste</span><span data-show-in-selection="true" style="margin-right: 10px;">+670</span></span></div><div class="option" iso="tg"><span class="icon-text-dropdown" data-value="Togo +228"><span data-show-in-selection="false" style="margin-right: 10px;">Togo</span><span data-show-in-selection="true" style="margin-right: 10px;">+228</span></span></div><div class="option" iso="tk"><span class="icon-text-dropdown" data-value="Tokelau +690"><span data-show-in-selection="false" style="margin-right: 10px;">Tokelau</span><span data-show-in-selection="true" style="margin-right: 10px;">+690</span></span></div><div class="option" iso="to"><span class="icon-text-dropdown" data-value="Tonga +676"><span data-show-in-selection="false" style="margin-right: 10px;">Tonga</span><span data-show-in-selection="true" style="margin-right: 10px;">+676</span></span></div><div class="option" iso="tt"><span class="icon-text-dropdown" data-value="Trinidad &amp; Tobago +1868"><span data-show-in-selection="false" style="margin-right: 10px;">Trinidad &amp; Tobago</span><span data-show-in-selection="true" style="margin-right: 10px;">+1868</span></span></div><div class="option" iso="tn"><span class="icon-text-dropdown" data-value="Tunisia +216"><span data-show-in-selection="false" style="margin-right: 10px;">Tunisia</span><span data-show-in-selection="true" style="margin-right: 10px;">+216</span></span></div><div class="option" iso="tr"><span class="icon-text-dropdown" data-value="Turkey +90"><span data-show-in-selection="false" style="margin-right: 10px;">Turkey</span><span data-show-in-selection="true" style="margin-right: 10px;">+90</span></span></div><div class="option" iso="tm"><span class="icon-text-dropdown" data-value="Turkmenistan +993"><span data-show-in-selection="false" style="margin-right: 10px;">Turkmenistan</span><span data-show-in-selection="true" style="margin-right: 10px;">+993</span></span></div><div class="option" iso="tc"><span class="icon-text-dropdown" data-value="Turks &amp; Caicos Islands +1"><span data-show-in-selection="false" style="margin-right: 10px;">Turks &amp; Caicos Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso="tv"><span class="icon-text-dropdown" data-value="Tuvalu +688"><span data-show-in-selection="false" style="margin-right: 10px;">Tuvalu</span><span data-show-in-selection="true" style="margin-right: 10px;">+688</span></span></div><div class="option" iso="um"><span class="icon-text-dropdown" data-value="US Outlying Islands +1"><span data-show-in-selection="false" style="margin-right: 10px;">US Outlying Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso="vi"><span class="icon-text-dropdown" data-value="US Virgin Islands +1340"><span data-show-in-selection="false" style="margin-right: 10px;">US Virgin Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+1340</span></span></div><div class="option" iso="ug"><span class="icon-text-dropdown" data-value="Uganda +256"><span data-show-in-selection="false" style="margin-right: 10px;">Uganda</span><span data-show-in-selection="true" style="margin-right: 10px;">+256</span></span></div><div class="option" iso="ua"><span class="icon-text-dropdown" data-value="Ukraine +380"><span data-show-in-selection="false" style="margin-right: 10px;">Ukraine</span><span data-show-in-selection="true" style="margin-right: 10px;">+380</span></span></div><div class="option" iso="ae"><span class="icon-text-dropdown" data-value="United Arab Emirates +971"><span data-show-in-selection="false" style="margin-right: 10px;">United Arab Emirates</span><span data-show-in-selection="true" style="margin-right: 10px;">+971</span></span></div><div class="option" iso="gb"><span class="icon-text-dropdown" data-value="United Kingdom +44"><span data-show-in-selection="false" style="margin-right: 10px;">United Kingdom</span><span data-show-in-selection="true" style="margin-right: 10px;">+44</span></span></div><div class="option" iso="us"><span class="icon-text-dropdown" data-value="United States +1"><span data-show-in-selection="false" style="margin-right: 10px;">United States</span><span data-show-in-selection="true" style="margin-right: 10px;">+1</span></span></div><div class="option" iso="uy"><span class="icon-text-dropdown" data-value="Uruguay +598"><span data-show-in-selection="false" style="margin-right: 10px;">Uruguay</span><span data-show-in-selection="true" style="margin-right: 10px;">+598</span></span></div><div class="option" iso="uz"><span class="icon-text-dropdown" data-value="Uzbekistan +998"><span data-show-in-selection="false" style="margin-right: 10px;">Uzbekistan</span><span data-show-in-selection="true" style="margin-right: 10px;">+998</span></span></div><div class="option" iso="vu"><span class="icon-text-dropdown" data-value="Vanuatu +678"><span data-show-in-selection="false" style="margin-right: 10px;">Vanuatu</span><span data-show-in-selection="true" style="margin-right: 10px;">+678</span></span></div><div class="option" iso="va"><span class="icon-text-dropdown" data-value="Vatican City +379"><span data-show-in-selection="false" style="margin-right: 10px;">Vatican City</span><span data-show-in-selection="true" style="margin-right: 10px;">+379</span></span></div><div class="option" iso="ve"><span class="icon-text-dropdown" data-value="Venezuela +58"><span data-show-in-selection="false" style="margin-right: 10px;">Venezuela</span><span data-show-in-selection="true" style="margin-right: 10px;">+58</span></span></div><div class="option" iso="vn"><span class="icon-text-dropdown" data-value="Vietnam +84"><span data-show-in-selection="false" style="margin-right: 10px;">Vietnam</span><span data-show-in-selection="true" style="margin-right: 10px;">+84</span></span></div><div class="option" iso="wf"><span class="icon-text-dropdown" data-value="Wallis &amp; Futuna +681"><span data-show-in-selection="false" style="margin-right: 10px;">Wallis &amp; Futuna</span><span data-show-in-selection="true" style="margin-right: 10px;">+681</span></span></div><div class="option" iso="eh"><span class="icon-text-dropdown" data-value="Western Sahara +212"><span data-show-in-selection="false" style="margin-right: 10px;">Western Sahara</span><span data-show-in-selection="true" style="margin-right: 10px;">+212</span></span></div><div class="option" iso="ye"><span class="icon-text-dropdown" data-value="Yemen +967"><span data-show-in-selection="false" style="margin-right: 10px;">Yemen</span><span data-show-in-selection="true" style="margin-right: 10px;">+967</span></span></div><div class="option" iso="zm"><span class="icon-text-dropdown" data-value="Zambia +260"><span data-show-in-selection="false" style="margin-right: 10px;">Zambia</span><span data-show-in-selection="true" style="margin-right: 10px;">+260</span></span></div><div class="option" iso="zw"><span class="icon-text-dropdown" data-value="Zimbabwe +263"><span data-show-in-selection="false" style="margin-right: 10px;">Zimbabwe</span><span data-show-in-selection="true" style="margin-right: 10px;">+263</span></span></div><div class="option" iso="ax"><span class="icon-text-dropdown" data-value="Åland Islands +672"><span data-show-in-selection="false" style="margin-right: 10px;">Åland Islands</span><span data-show-in-selection="true" style="margin-right: 10px;">+672</span></span></div></div></ul>
+ 	 	 	 	 	</div>
+ 	 	 	 	</div>
+ 	 	 	 	<div class="field-2">
+ 	 	 	 	 	<div class="">
+ 	 	 	 	 	<input maxlength="30" type="text" value="" class="wf-field-item wf-field-input" oninput="removeError(this)">
+ 	 	 	 	 	<input ftype="dialcode" name="Mobile" maxlength="30" type="text" style="display:none;" rest_alpha="true">
+ 	 	 	 	 	</div>
+ 	 	 	 	</div>
+ 	 	 	 	</div>
+ 	 	 	</div>
+ 	 	</div>
+ 	 	<div class="wf-row">  
+ 	 	 	<div class="wf-label">Description</div>
+ 	 	 	<div class="wf-field wf-field-mandatory">
+ 	 	 	 	<div class="wf-field-inner">
+ 	 	 	 	<textarea name="Description" maxlength="32000" type="text" class="wf-field-item wf-field-input wf-text-area-input" oninput="removeError(this)"></textarea>
+ 	 	 	 	</div>
+ 	 	 	</div>
+ 	 	</div>
+ 	 	<div class="wf-row">  
+ 	 	 	<div class="wf-label"></div>
+ 	 	 	<div class="wf-field">
+ 	 	 	 	<div class="wf-field-inner flex-center-v">
+ 	 	 	 	 	<input class="wf-field-item wf-field-checkbox" type="checkbox" id="privacycheck929836000000407878" name="privacyTool" autocomplete="off" onclick="disablePrivacyError929836000000407878()">
+ 	 	 	 	 	<label for="privacycheck929836000000407878" class="cP"><div style="font-size:14px; font-family:undefined"><div style="font-size:14px; font-family:undefined">I agree to the <a href="https://www.eddybits.com/privacy-policy/" target="_blank">Privacy Policy</a> and <a href="https://www.eddybits.com/terms-of-service/" target="_blank" title="Terms of Service">Terms of Service</a>.</div></div></label>
+ 	 	 	 	</div>
+ 	 	 	</div>
+ 	 	</div>
+ 	 	<div class="wform-btn-wrap" data-ux-pos="left">
+ 	 	 	<input id="formsubmit" type="submit" class="wf-btn" data-ux-btn-type="default" style="background-color:#1980d8; color: #fff; border: 1px solid #1980d8;width: auto;" value="Submit">
+ 	 	</div>
+	</div>
+	</form>
+	</div>
+</div>
+
+
+  <script>
+ 	  var mndFileds=new Array('First\x20Name','Last\x20Name','Mobile','Description');
+ 	  var fldLangVal=new Array('First Name','Last Name','Mobile','Description');
+ 	 var wfInnerWidth = window.innerWidth;
+ 	 if(wfInnerWidth <= 768){
+ 	 	 document.forms['BiginWebToRecordForm929836000000407878'].setAttribute('data-ux-form-alignment', 'top');
+ 	 }
+ 	function removeError(fieldObj) {
+ 	 	var parentElement = fieldObj.closest('.wf-field'),
+ 	 	 	childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
+ 	 	if(childEle) {
+ 	 	 	parentElement.classList.remove('wf-field-error-active');
+ 	 	 	parentElement.removeChild(parentElement.getElementsByClassName('wf-error-parent-ele')[0]);
+ 	 	}
+ 	}
+ 	function setError(fieldObj, label) {
+ 	 	var parentElement = fieldObj.closest('.wf-field'),
+ 	 		childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
+ 	 	if(!childEle) {
+ 	 	 	var errorParentEle = document.createElement('DIV'),
+ 	 	 	spanEle = document.createElement('SPAN'),
+ 	 	 	viewMoreEle = document.createElement('SPAN');
+ 	 	 	spanEle.setAttribute('class', 'wf-field-error wf-field-error-long');
+ 	 	 	spanEle.innerHTML = label;
+ 	 	 	errorParentEle.classList.add('wf-error-parent-ele');
+ 	 	 	errorParentEle.appendChild(spanEle);
+ 	 	 	parentElement.append(errorParentEle);
+ 	 	 	parentElement.classList.add('wf-field-error-active');
+ 	 	 	if(spanEle.scrollWidth > parentElement.offsetWidth) {
+ 	 	 	 	viewMoreEle.innerHTML = 'View More';
+ 	 	 	 	viewMoreEle.classList.add('wf-error-view-more');
+ 	 	 	 	errorParentEle.append(viewMoreEle);
+ 	 	 	 	viewMoreEle.addEventListener('click', function() {
+ 	 	 	 	errorParentEle.removeChild(viewMoreEle);
+ 	 	 	 	spanEle.classList.remove('wf-field-error-long');
+ 	 	 	 	});
+ 	 	 	} else {
+ 	 	 	 	spanEle.classList.remove('wf-field-error-long')
+ 	 	 	}
+ 	 	}
+ 	}
+ 	function validateFields929836000000407878() {
+ 	 	var isReturn = true;
+ 	 	var form = document.forms['BiginWebToRecordForm929836000000407878'];
+ 	 	var validateFld = form.querySelectorAll('[fvalidate=true]');
+ 	 	var i;
+ 	 	for (i = 0; i < validateFld.length; i++)
+ 	 	{
+ 	 	 	var validateFldVal = validateFld[i].value;
+ 	 	 	if(validateFldVal !== '') {
+ 	 	 	 	var fLabel = validateFld[i].parentElement.parentElement.parentElement.getElementsByClassName('wf-label')[0].innerHTML;
+ 	 	 	 	switch(validateFld[i].getAttribute('ftype')) {
+ 	 	 	 	case 'string_rest_number':
+ 	 	 	 	case 'string':
+ 	 	 	 	 	var isError = false,
+ 	 	 	 	 	errorKey = 'Only letters are allowed.';
+ 	 	 	 	 	if(validateFld[i].getAttribute('ftype') === 'string_rest_number' && validateFldVal.match((/\d/g)) !== null) {	
+ 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	}else if(validateFld[i].hasAttribute('fmin')){
+ 	 	 	 	 	 	if(validateFldVal.length < parseInt(validateFld[i].getAttribute('fmin'))) {
+ 	 	 	 	 	 	 	errorKey = 'Your input must be at least ' +validateFld[i].getAttribute('fmin') + ' character(s).';
+ 	 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	 	} else if(validateFldVal.length > parseInt(validateFld[i].getAttribute('fmax'))) {
+ 	 	 	 	 	 	 	errorKey = 'Your input should not exceed ' +validateFld[i].getAttribute('fmax') + ' character(s).';
+ 	 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	 	}
+ 	 	 	 	 	}
+ 	 	 	 	 	if(isError){
+ 	 	 	 	 	 	setError(validateFld[i], errorKey);
+ 	 	 	 	 	 	isReturn = false;
+ 	 	 	 	 	}
+ 	 	 	 	 	break;
+ 	 	 	 	case 'email':
+ 	 	 	 	 	if(validateFldVal.match(/^([A-Za-z0-9-._%'+/]+@[A-Za-z0-9.-]+.[a-zA-Z]{2,22})$/) === null) {
+ 	 	 	 	 	 	setError(validateFld[i], 'Enter valid ' + fLabel);
+ 	 	 	 	 	 	isReturn = false;
+ 	 	 	 	 	}
+ 	 	 	 	 	break;
+ 	 	 	 	case 'number':
+ 	 	 	 	case 'double':
+ 	 	 	 	 	var isError = false,
+ 	 	 	 	 	errorKey = 'Enter valid ' + fLabel;
+ 	 	 	 	 	if((validateFld[i].getAttribute('ftype') === 'number' && validateFldVal.match(/^[0-9]+$/) === null)
+ 	 	 	 	 			|| (validateFld[i].getAttribute('ftype') === 'double' && validateFldVal.match(/^[0-9]*(\.[0-9]{0,2})?$/) === null)) {
+ 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	}else if(validateFld[i].hasAttribute('fmin')){
+ 	 	 	 	 	 	if(validateFldVal < parseInt(validateFld[i].getAttribute('fmin'))) {
+ 	 	 	 	 	 	 	errorKey = 'Enter a number greater than or equal to ' +validateFld[i].getAttribute('fmin');
+ 	 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	 	} else if(validateFldVal > parseInt(validateFld[i].getAttribute('fmax'))) {
+ 	 	 	 	 	 	 	errorKey = 'Enter a number less than or equal to ' +validateFld[i].getAttribute('fmax');
+ 	 	 	 	 	 	 	isError = true;
+ 	 	 	 	 	 	}
+ 	 	 	 	 	}
+ 	 	 	 	 	if(isError){
+ 	 	 	 	 	 	setError(validateFld[i], errorKey);
+ 	 	 	 	 	 	isReturn = false;
+ 	 	 	 	 	}
+ 	 	 	 	 	break;
+ 	 	 	 	 }
+ 	 	 	}
+ 	 	}
+ 	 	return isReturn;
+ 	}
+ 	function privacyError929836000000407878() {
+ 	 	var privacyTool = document.getElementById('privacycheck929836000000407878');
+ 	 	if(privacyTool !=undefined && !privacyTool.checked )
+ 	 	{
+ 	 	 	setError(privacyTool, 'Please accept Privacy Policy');
+ 	 	 	return false;
+ 	 	}
+ 	 	return true;
+ 	}
+ 	function disablePrivacyError929836000000407878() {
+ 	 	var privacyTool = document.getElementById('privacycheck929836000000407878');
+ 	 	removeError(privacyTool);
+ 	}
+ 	function showDropDown929836000000407878(_c){
+ 	 	var _dd = _c.getElementsByClassName('dropdown')[0],
+ 	 	 _ddInput = _c.getElementsByClassName('dropdown-input')[0],
+ 	 	 ddM = _c.querySelector('.dropdown-menu'),
+ 	 	 _sOpt = _c.getElementsByClassName('selected-options')[0];
+ 	 	 if(_ddInput && _ddInput.value !== '') {
+
+ 	 	 	this.removeError(_ddInput);
+
+ 	 	 }
+ 	 	if(ddM.childElementCount === 0) {
+ 	 	 	_c.classList.remove('dropbox-active');
+ 	 	 	_sOpt.classList.add('drp-dwn-no-val');
+ 	 	 	return false;
+ 	 	}
+ 	 	document.querySelectorAll('.dropdown').forEach(dropdwn=>{
+ 	 	 	if(!dropdwn.classList.contains('hide-dropdown')) {
+ 	 	 	 	dropdwn.classList.add('hide-dropdown');
+ 	 	 	}
+ 	 	 	dropdwn.querySelectorAll('.dropdown-input').forEach(inp=>{
+ 	 	 	 	if(!inp.classList.contains('dN')) {
+ 	 	 	 	 	inp.classList.add('dN');
+ 	 	 	 	}
+ 	 	 	});
+ 	 	});
+ 	 	let dds = document.querySelectorAll('.dropdown');
+ 	 	if(dds) {
+ 	 	 	dds.forEach(ddElem=>{
+ 	 	 	 	if(ddElem.classList.contains('open')) {
+ 	 	 	 	 	ddElem.classList.remove('open');
+ 	 	 	 	}
+ 	 	 	});
+ 	 	}
+ 	 	if(_sOpt) {
+ 	 	 	_sOpt.classList.remove('drop-box-closed', 'drp-dwn-no-val', 'selected-options-field');
+ 	 	}
+ 	 	_c.closest('.wf-form-wrapper').querySelectorAll('.multiselect').forEach(ddWrap=>{
+ 	 	 	if(ddWrap.classList.contains('dropbox-active')) {
+ 	 	 	 	ddWrap.classList.remove('dropbox-active');
+ 	 	 	}
+ 	 	});
+ 	 	_c.classList.add('dropbox-active');
+ 	 	ddM.classList.add('dropdown-focus');
+ 	 	if(_ddInput) {
+ 	 	_ddInput.classList.remove('input-not-active', 'drop-box-closed');
+ 	 	_ddInput.setAttribute('placeholder', 'Search Here');
+ 	 	}
+ 	 	if(ddM.childElementCount > 1) {
+ 	 	 	_c.querySelector('.dropdown').classList.remove('hide-dropdown');
+ 	 	}
+ 	 	let options = _c.querySelectorAll('.option');
+ 	 	options.forEach(option=>{
+ 	 	 	if(option.classList.contains('no-results')) {
+ 	 	 	 	if(!_ddInput.classList.contains('dN')) {
+ 	 	 	 	 	_ddInput.classList.add('dN');
+ 	 	 	 	}
+ 	 	 	}
+ 	 	});
+ 	 	if(_dd.classList.contains('dN')) {
+ 	 	 	_dd.classList.remove('dN');
+ 	 	}
+ 	 	_dd.classList.add('open');
+ 	 	if(ddM.querySelector('.option[data-selected=true]')) {
+ 	 	 	ddM.querySelector('.option[data-selected=true]').scrollIntoView({block: 'center'});
+ 	 	}
+ 	 	if(_ddInput && _ddInput.classList.contains('dN')) {
+ 	 	 	_ddInput.classList.remove('dN');
+ 	 	}
+ 	 	_c.querySelector('.dropdown').classList.remove('hide-dropdown');
+ 	 	if(_ddInput){
+ 	 	_ddInput.focus();
+ 	 	}
+ 	 	setTimeout(function () {
+ 	 	 	if (_dd.getBoundingClientRect().bottom + ddM.offsetHeight + 10 > window.innerHeight) {
+ 	 	 	let top = ddM.offsetHeight;
+ 	 	 	if (ddM.closest('.ux-pick-mixed')) {
+ 	 	 	 	top = ddM.offsetHeight + 4;
+ 	 	 	} else {
+ 	 	 	 	if (_sOpt.offsetHeight) {
+ 	 	 	 	 	top = Math.abs(ddM.offsetHeight) + _sOpt.offsetHeight
+ 	 	 	 	}
+ 	 	 	}
+ 	 	 	_dd.closest('.wf-field-dropdown').classList.add('dropdownTop');
+ 	 	 	ddM.classList.add('dropdownTop');
+ 	 	 	ddM.style.top = '-' + top + 'px';
+ 	 	 	} else {
+ 	 	 	 	_dd.closest('.wf-field-dropdown').classList.remove('dropdownTop');
+ 	 	 	 	ddM.classList.remove('dropdownTop');
+ 	 	 	 	ddM.style.top = '';
+ 	 	 	}
+ 	 	}, 200)
+ 	}
+ 	function handleSearchForDropdown(dropdownInput, dropdownSelector) {
+ 	 	var dropdownMenu = dropdownInput.parentElement.querySelector(dropdownSelector),
+ 	 	 searchText = dropdownInput.value.toLowerCase(),
+ 	 	 noResults = document.getElementsByClassName('no-results')[0],
+ 	 	 div = document.createElement('div'),
+ 	 	 span = document.createElement('span'),
+ 	 	 options = dropdownMenu.querySelectorAll('.option');
+ 	 	span.setAttribute('data-value', 'No results');
+ 	 	div.setAttribute('data-value', 'No results');
+ 	 	div.setAttribute('class', 'option no-results');
+ 	 	div.textContent = 'No options found';
+ 	 	options.forEach(function (option) {
+ 	 	 	let optionValue = option.querySelector('span').dataset.value.toLowerCase();
+ 	 	 	if (optionValue.includes(searchText)) {
+ 	 	 	 	option.classList.add('opt-show');
+ 	 	 	 	option.classList.remove('opt-hide');
+ 	 	 	} else {
+ 	 	 	 	option.classList.remove('opt-show');
+ 	 	 	 	option.classList.add('opt-hide');
+ 	 	 	}
+ 	 	});
+ 	 	for (i = 0; i < options.length; i++) {
+ 	 	 	if (options[i].classList.contains('opt-hide')) {
+ 	 	 	 	if (i == options.length - 1) {
+ 	 	 	 	 	div.appendChild(span);
+ 	 	 	 	 	if (options[i].classList.contains('no-results')) {
+ 	 	 	 	 	 	if (noResults.classList.contains('opt-hide')) {
+ 	 	 	 	 	 	 	noResults.classList.remove('opt-hide');
+ 	 	 	 	 	 	}
+ 	 	 	 	 	 	return false;
+ 	 	 	 	 	} else {
+ 	 	 	 	 	 	dropdownMenu.appendChild(div);
+ 	 	 	 	 	}
+ 	 	 	 	}
+ 	 	 	} else {
+ 	 	 	 	 if (noResults) {
+ 	 	 	 	 	noResults.remove();
+ 	 	 	 	 }
+ 	 	 	 	return false;
+ 	 	 	}
+ 	 	}
+ 	}
+ 	function createDropdownOptions929836000000407878(eleID, optionsData, sOpt) {
+ 	 	var eleDiv = document.getElementById(eleID),
+ 	 	 _dd = eleDiv.getElementsByClassName('dropdown')[0],
+ 	 	 _ddM = eleDiv.querySelector('.dropdown-menu'),
+ 	 	 _ddInput = eleDiv.getElementsByClassName('dropdown-input')[0],
+ 	 	 _sOpt = eleDiv.getElementsByClassName('selected-options')[0],
+ 	 	_msPar = eleDiv.closest('.wf-field');
+ 	 	_ddM.innerHTML = ''; 
+
+ 	 	optionsData.forEach(function(optionValue) {
+ 	 	 	if (!sOpt.includes(optionValue)) {
+ 	 	 	 	var optionContainer = document.createElement('div');
+ 	 	 	 	optionContainer.classList.add('option');
+ 	 	 	 	var optionTag = document.createElement('span');
+ 	 	 	 	optionTag.textContent = optionValue;
+ 	 	 	 	optionTag.dataset.value = optionValue;
+ 	 	 	 	optionTag.classList.add('option-txt');
+ 	 	 	 	optionContainer.appendChild(optionTag);
+ 	 	 	 	_ddM.appendChild(optionContainer);
+ 	 	 	}
+ 	 	});
+ 	 	var options = _ddM.querySelectorAll('.option');
+ 	 	options.forEach(function(option) {
+ 	 	 	option.addEventListener('click', function() {
+ 	 	 	 	var optionValue = this.querySelector('span').dataset.value;
+ 	 	 	 	addSelectedOption(eleID, optionsData, sOpt, [optionValue]);
+ 	 	 	 	if(_sOpt.childElementCount > 0){
+ 	 	 	 	 	_sOpt.classList.remove('hide-opt-list');
+ 	 	 	 	 	_ddInput.classList.add('drop-box-active');
+ 	 	 	 	}
+ 	 	 	 	let tags = _sOpt.querySelectorAll('.tag-data-val');
+ 	 	 	 	if(tags) {
+ 	 	 	 	tags.forEach(tagVal=>{
+ 	 	 	 	if((tagVal.scrollWidth > tagVal.clientWidth) && !tagVal.getAttribute('title')){
+ 	 	 	 	tagVal.setAttribute('title', tagVal.getAttribute('data-value'));
+ 	 	 	 	}
+ 	 	 	 	})
+ 	 	 	 	}
+ 	 	 	 	if(_sOpt.childElementCount > 1) {
+ 	 	 	 	 	_sOpt.classList.add('set-opt-list');
+ 	 	 	 	}
+ 	 	 	 	if(_ddM.childElementCount === 0){
+ 	 	 	 	 	_dd.classList.add('hide-dropdown');
+ 	 	 	 	 	if(option && !option.classList.contains('no-results')) {
+ 	 	 	 	 	 	let div = document.createElement('div'),
+ 	 	 	 	 	 	span = document.createElement('span');
+ 	 	 	 	 	 	div.textContent = 'No options found';
+ 	 	 	 	 	 	span.setAttribute('data-value', 'No results');
+ 	 	 	 	 	 	div.setAttribute('class', 'option no-results');
+ 	 	 	 	 	 	div.appendChild(span);
+ 	 	 	 	 	 	_ddM.appendChild(div);
+ 	 	 	 	 	 	_ddM.classList.add('hide-the-inp');
+ 	 	 	 	 	 	_ddInput.classList.add('dN');
+ 	 	 	 	 	 	eleDiv.classList.add('no-results-elem');
+ 	 	 	 	 	 	eleDiv.closest('.wf-field-inner').classList.add('no-results-elem');
+ 	 	 	 	 	}else {
+ 	 	 	 	 	 	_dd.classList.add('dN');
+ 	 	 	 	 	 	_ddInput.classList.remove('dN');
+ 	 	 	 	 	 	eleDiv.classList.remove('no-results-elem');
+ 	 	 	 	 	 	eleDiv.closest('.wf-field-inner').classList.remove('no-results-elem');
+ 	 	 	 	 	}
+ 	 	 	 	}
+ 	 	 	});
+ 	 	});
+ 	 	if(_msPar && _msPar.classList.contains('wf-field-error-active')){
+ 	 	 	this.removeError(_ddInput);
+ 	 	}
+ 	 	if(_sOpt && _sOpt.childElementCount > 4) {
+ 	 	 	_sOpt.lastElementChild.scrollIntoView();
+ 	 	}
+ 	}
+ 	 function addSelectedOption(eleID, optionsData, sOpt, optionsValue) {
+ 	 	var eleDiv = document.getElementById(eleID),
+ 	 	 _sOpt = eleDiv.getElementsByClassName('selected-options')[0],
+ 	 	 _ddInput = eleDiv.getElementsByClassName('dropdown-input')[0]; 
+
+ 	 	optionsValue.map(optionValue => {
+ 	 	if (!sOpt.includes(optionValue)) {
+ 	 	 	sOpt.push(optionValue); 
+
+ 	 	 	var optionContainer = document.createElement('div');
+ 	 	 	optionContainer.classList.add('selected-option', 'multi-tag'); 
+
+ 	 	 	var optionTag = document.createElement('span');
+ 	 	 	optionTag.classList.add('tag-data-val', 'ellipsis');
+ 	 	 	optionTag.textContent = optionValue;
+ 	 	 	optionTag.dataset.value = optionValue;
+ 	 	 	optionContainer.appendChild(optionTag);
+
+ 	 	 	var removeButton = document.createElement('span');
+ 	 	 	removeButton.textContent = 'x';
+ 	 	 	removeButton.classList.add('remove-button', 'tag-close-btn');
+ 	 	 	removeButton.addEventListener('click', function(clseBtn) {
+ 	 	 	 	var optionContainer = this.parentNode,
+ 	 	 	 	 optionValue = optionContainer.querySelector('span').dataset.value,
+ 	 	 	 	 dropdown = document.getElementsByClassName('dropdown')[0];
+ 	 	 	 	let closeDD = clseBtn && clseBtn.currentTarget.closest('.multiselect') ? clseBtn.currentTarget.closest('.multiselect').getElementsByClassName('dropdown')[0] : undefined;
+ 	 	 	 	if(closeDD && closeDD.classList.contains('dN')) {
+ 	 	 	 	 	closeDD.classList.remove('dN');
+ 	 	 	 	 	}
+ 	 	 	 	 	if(clseBtn && clseBtn.currentTarget.previousElementSibling && clseBtn.currentTarget.previousElementSibling.getAttribute('title')) {
+ 	 	 	 	 	clseBtn.currentTarget.previousElementSibling.removeAttribute('title');
+ 	 	 	 	}
+ 	 	 	 	_sOpt.removeChild(optionContainer);
+ 	 	 	 	var index = sOpt.indexOf(optionValue);
+ 	 	 	 	if (index > -1) {
+ 	 	 	 	 	sOpt.splice(index, 1);
+ 	 	 	 	}
+ 	 	 	 	if(_sOpt.childElementCount === 0){
+ 	 	 	 	 	_sOpt.classList.add('hide-opt-list');
+ 	 	 	 	 	_ddInput.classList.remove('drop-box-active');
+ 	 	 	 	 	_sOpt.classList.remove('set-opt-list');
+ 	 	 	 	}
+ 	 	 	 	let _ddM = closeDD.getElementsByClassName('dropdown-menu')[0];
+ 	 	 	 	if(_ddM && _ddM.childElementCount > 0) {
+ 	 	 	 	 	_ddInput.classList.remove('dN');
+ 	 	 	 	 	closeDD.classList.remove('hide-dropdown');
+ 	 	 	 	 	closeDD.querySelector('.dropdown-menu').classList.remove('hide-the-inp');
+ 	 	 	 	}
+ 	 	 	 	if(closeDD.closest('.wf-field-inner').classList.contains('no-results-elem')) {
+ 	 	 	 	 	closeDD.closest('.wf-field-inner').classList.remove('no-results-elem');
+ 	 	 	 	 	closeDD.closest('.wf-field-inner').querySelector('.multiselect').classList.remove('no-results-elem');
+ 	 	 	 	}
+ 	 	 	 	 	createDropdownOptions929836000000407878(eleID, optionsData, sOpt);
+ 	 	 	});
+ 	 	 	optionContainer.appendChild(removeButton);
+ 	 	 	_sOpt.appendChild(optionContainer);
+ 	 	}
+ 	 	});
+ 	 	_ddInput.value = '';
+ 	 	_ddInput.focus();
+ 	 	createDropdownOptions929836000000407878(eleID, optionsData, sOpt);
+ 	}
+ 	document.addEventListener('click', function(e){
+ 	 	let targetClasses = e.target.classList,
+ 	 	 classNames = ['multiselect', 'selected-options', 'dropdown-input', 'option', 'option-txt', 'selected-option', 'remove-button', 'dropdown'];
+ 	 	if((!e.target.closest('.single-select-drp') && classNames.some(className => targetClasses.contains(className))) || (e.target.closest('.dropdown') &&  !e.target.closest('.dropdown-items-wrapper'))){
+ 	 	 	return true;
+ 	 	}else{
+ 	 	 	var mLen = multiPickFields.length;
+ 	 	 	for(i=0; i<mLen; i++) {
+ 	 	 	var dropdownMenu = document.querySelector('.dropdown-menu'),
+ 	 	 	 dropdown = document.getElementsByClassName('dropdown')[i],
+ 	 	 	 multiselectBox = document.getElementsByClassName('multiselect')[i],
+ 	 	 	 selectedOptions = document.getElementsByClassName('selected-options')[i],
+ 	 	 	 dropdownInput = document.getElementsByClassName('dropdown-input')[i],
+ 	 	 	 options = dropdownMenu.querySelectorAll('.option');
+ 	 	 	noResults = document.getElementsByClassName('no-results')[i];
+ 	 	 	dropdown.classList.remove('open');
+ 	 	 	multiselectBox.classList.remove('dropbox-active');
+ 	 	 	dropdownMenu.classList.remove('dropdown-focus');
+ 	 	 	selectedOptions.classList.add('drop-box-closed');
+ 	 	 	dropdownInput.classList.add('drop-box-closed');
+ 	 	 	if(dropdownInput.value || (multiselectBox.querySelector('.dropdown-search-input') && multiselectBox.querySelector('.dropdown-search-input').value)){
+ 	 	 	if(dropdownInput.value){
+ 	 	 	 	dropdownInput.value = '';
+ 	 	 	} else {
+ 	 	 	 	multiselectBox.querySelector('.dropdown-search-input').value = '';
+ 	 	 	}
+ 	 	 	 	options.forEach(function(option){
+ 	 	 	 	if(option.classList.contains('opt-hide')){
+ 	 	 	 	 	option.classList.remove('opt-hide')
+ 	 	 	 	}
+ 	 	 	 	});
+ 	 	 	}
+ 	 	 	if(selectedOptions.childNodes.length < 1){
+ 	 	 	 	selectedOptions.classList.add('selected-options-field');
+ 	 	 	 	dropdownInput.removeAttribute('placeholder');
+ 	 	 	}else{
+ 	 	 	 	selectedOptions.classList.remove('selected-options-field');
+ 	 	 	}
+ 	 	 	if(!dropdown.classList.contains('open')) {
+ 	 	 	 	dropdown.classList.add('hide-dropdown');
+ 	 	 	 	dropdownInput.classList.add('dN');
+ 	 	 	}else {
+ 	 	 	 	dropdownInput.classList.remove('dN');
+ 	 	 	 	dropdown.classList.remove('hide-dropdown');
+ 	 	 	}
+ 	 	 	}
+ 	 	 	noResults = Array.from(document.getElementsByClassName('no-results'));
+ 	 	 	noResults.map(x => x.remove());
+ 	 	}
+ 	});
+ 	document.querySelectorAll('.dropdown-input').forEach(function(ddEle) {
+ 	 	ddEle.addEventListener('input', function (ele) {
+ 	 	 	handleSearchForDropdown(ele.srcElement,'.dropdown-menu');
+ 	 	});
+ 	});
+ 	function validateMultiPick929836000000407878() {
+ 	 	var form = document.forms['BiginWebToRecordForm929836000000407878'],
+ 	 	 isReturn = true;
+ 	 	form.querySelectorAll('[multipick=true]').forEach(function(multiPickEle){
+ 	 	 	var optionsA = window['sopt'+multiPickEle.name],
+ 	 	 	 optL = optionsA.length,
+ 	 	 	 isError = false,
+ 	 	 	 errorKey = '',
+ 	 	 	 pickOptions = '';
+ 	 	 	if(multiPickEle.hasAttribute('fmin')) {
+ 	 	 	 	if(optL < parseInt(multiPickEle.getAttribute('fmin'))) {
+ 	 	 	 	 	errorKey = 'You must select at least ' + multiPickEle.getAttribute('fmin') + ' option(s)';
+ 	 	 	 	 	isError = true;
+ 	 	 	 	} else if(optL > parseInt(multiPickEle.getAttribute('fmax'))) {
+ 	 	 	 	 	errorKey = 'You can select up to only ' + multiPickEle.getAttribute('fmax') + ' option(s)';
+ 	 	 	 	 	isError = true;
+ 	 	 	 	}
+ 	 	 	}
+ 	 	 	if(isError){
+ 	 	 	 	setError(multiPickEle, errorKey);
+ 	 	 	 	isReturn = false;
+ 	 	 	} else {
+ 	 	 	 	for (j = 0; j < optL; j++) {
+ 	 	 	 	 	if(pickOptions === '') {
+ 	 	 	 	 	 	pickOptions = optionsA[j];
+ 	 	 	 	 	} else {
+ 	 	 	 	 	 	pickOptions += ';' + optionsA[j];
+ 	 	 	 	 	}
+ 	 	 	 	}
+ 	 	 	}
+ 	 	 	multiPickEle.value = pickOptions;
+ 	 	});
+ 	 	return isReturn;
+ 	}
+ 	function createSingleSelectDrp(eleID, optionsData) {
+ 	 	var eleDiv = document.getElementById(eleID),
+ 	 	 _dd = eleDiv.getElementsByClassName('dropdown')[0],
+ 	 	 _ddM = eleDiv.querySelector('.dropdown-menu'),
+ 	 	 input = document.createElement('input'),
+ 	 	 drpItemsWrapper = document.createElement('div');
+ 	 	_ddM.innerHTML = '';
+ 	 	input.type = 'text';
+ 	 	input.setAttribute('placeholder', 'Search');
+ 	 	input.classList.add('dropdown-search-input');
+ 	 	drpItemsWrapper.className = 'dropdown-items-wrapper';
+ 	 	_ddM.appendChild(input);
+ 	 	_ddM.appendChild(drpItemsWrapper);
+ 	 	optionsData.dropdownItems.forEach(function (optionValue) {
+ 	 	 	var optionContainer = document.createElement('div');
+ 	 	 	optionContainer.classList.add('option');
+ 	 	 	optionContainer.setAttribute('iso', optionValue.iso);
+ 	 	 	optionContainer.appendChild(createDrpForObjectType(optionsData, optionValue, eleDiv));
+ 	 	 	if (optionValue.isDefault) {
+ 	 	 	 	setSelectedOption(optionContainer, eleDiv);
+ 	 	 	}
+ 	 	 	drpItemsWrapper.appendChild(optionContainer);
+ 	 	});
+ 	 	var options = _ddM.querySelectorAll('.option');
+ 	 	options.forEach(function (option) {
+ 	 	 	option.addEventListener('click', function () {
+ 	 	 	 	setSelectedOption(option, eleDiv)
+ 	 	 	});
+ 	 	});
+ 	 	input.addEventListener('input', function (ele) {
+ 	 	 	handleSearchForDropdown(ele.srcElement, '.dropdown-items-wrapper');
+ 	 	});
+ 	}
+ 	function setSelectedOption(option, eleDiv) {
+ 	 	var content = eleDiv.querySelectorAll('.content-display-area'),
+ 	 	 content_index = 0;
+ 	 	if (eleDiv.querySelector('.dropdown-menu').querySelectorAll('.option[data-selected=true]').length > 0) {
+ 	 	 	eleDiv.querySelector('.dropdown-menu').querySelectorAll('.option[data-selected=true]')[0].dataset.selected = false;
+ 	 	}
+ 	 	Array.from(option.getElementsByTagName('span')).filter(el => el.getAttribute('data-show-in-selection') === 'true').map(x => {
+ 	 	 	content[content_index].innerHTML = x.innerHTML;
+ 	 	 	content_index++;
+ 	 	});
+ 	 	option.dataset.selected = true;
+ 	 	window[eleDiv.id+'Code'] = option.getAttribute('iso');
+ 	}
+ 	function createDrpForObjectType(config, item, eleDiv) {
+ 	 	var index = 1,
+ 	 	 optionTag = document.createElement('span');
+ 	 	optionTag.classList.add('icon-text-dropdown');
+ 	 	while (config[`displayLabel${index}`]) {
+ 	 	 	var ele = document.createElement('span');
+ 	 	 	ele.innerHTML = item[config[`displayLabel${index}`]];
+ 	 	 	ele.dataset.showInSelection = config.showInSelection.includes(`displayLabel${index}`);
+ 	 	 	ele.style.marginRight = '10px';
+ 	 	 	optionTag.appendChild(ele);
+ 	 	 	optionTag.dataset.value = item[config.searchValue];
+ 	 	 	index++;
+ 	 	}
+ 	 	return optionTag;
+ 	}
+ 	function validatePhone929836000000407878() {
+ 	 	var form = document.forms['BiginWebToRecordForm929836000000407878'],
+ 	 	 isReturn = true;
+ 	 	form.querySelectorAll('[ftype=dialcode]').forEach(function(phoneEle){
+ 	 	 	var dialCode = countries.find(({iso}) => iso === window['ph'+phoneEle.name.replaceAll('.', '___').replaceAll(' ', '___')+'Code']).dial,
+ 	 	 	 isError = false,
+ 	 	 	 phMsg = 'Enter valid numbers',
+ 	 	 	 phVal = phoneEle.previousElementSibling.value;
+ 	 	 	if(phVal !== '') {
+ 	 	 	if(phoneEle.hasAttribute('rest_alpha') && phVal.match(/^[0-9]+$/) === null) {
+ 	 	 	 	isError = true;
+ 	 	 	 	phMsg = 'Enter only numbers';
+ 	 	 	} else if(phVal.match(/^[0-9a-zA-Z+.()\-;\s]+$/) === null) {
+ 	 	 	 	isError = true;
+ 	 	 	}
+ 	 	 	if(isError) {
+ 	 	 	 	setError(phoneEle.previousElementSibling, phMsg);
+ 	 	 	 	isReturn = false;
+ 	 	 	} else {
+ 	 	 	 	phoneEle.value = dialCode + phoneEle.previousElementSibling.value;
+ 	 	 	}
+ 	 	 	}
+ 	 	});
+ 	 	return isReturn;
+ 	}
+
+		function checkMandatory929836000000407878() {
+		var isReturn = true;
+		var isNotCaptcha = false;
+		for(i=0;i<mndFileds.length;i++) {
+		  var fieldObj=document.forms['BiginWebToRecordForm929836000000407878'][mndFileds[i]];
+		  if(fieldObj) {
+			if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+				if(fieldObj.type =='file'){
+					setError(fieldObj, 'Please select a file to upload.'); 
+					isReturn = false;
+				}
+				else if(fieldObj.getAttribute('ftype') === 'dialcode'){
+				if(fieldObj.previousElementSibling && fieldObj.previousElementSibling.value === '') {
+					setError(fieldObj.previousElementSibling, fldLangVal[i] + ' cannot be empty');
+					isReturn = false;
+				}
+				}
+				else {
+					setError(fieldObj, fldLangVal[i] + ' cannot be empty');
+				isReturn= false;
+				}
+			}  else if(fieldObj.nodeName=='SELECT') {
+				if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+				setError(fieldObj, fldLangVal[i] +' cannot be none.');
+				isReturn = false;
+			   }
+			} else if(fieldObj.type =='checkbox'){
+ 	 	 	 if(fieldObj.checked == false){
+				setError(fieldObj, 'Please accept  '+fldLangVal[i]);
+				isReturn= false;
+				} 
+			 }
+		    }
+		}
+		if(!privacyError929836000000407878()){isReturn = false;}
+		 isNotCaptcha = true;
+		if(!validateFields929836000000407878()){isReturn = false;}
+		if(!validatePhone929836000000407878()){isReturn = false;}
+		if(!isReturn){
+			var errEle = document.getElementsByClassName('wf-field-error');
+			if(errEle && errEle.length >0){
+				var inputEle = errEle[0].closest('.wf-field').getElementsByTagName('input');
+				if(inputEle && inputEle.length == 0) {
+					inputEle = errEle[0].closest('.wf-field').getElementsByTagName('select');
+				}
+				if(inputEle && inputEle.length > 0) {
+					inputEle[0].focus();
+				}
+			}
+		}else if(isNotCaptcha){
+			document.getElementById('formsubmit').disabled = true;
+		}
+		return isReturn; 
+		}
+
+	   
+		document.getElementById('hidden929836000000407878Frame').addEventListener('load', function () {
+			try {
+				var doc = arguments[0].currentTarget.contentWindow.document;
+				if(doc.body.childElementCount !== 0) {
+					arguments[0].currentTarget.style.display = 'block';
+					document.getElementById('BiginWebToRecordFormParent929836000000407878').style.display = 'none';
+				}
+			} catch (error) {
+				arguments[0].currentTarget.style.display = 'block';
+				document.getElementById('BiginWebToRecordFormParent929836000000407878').style.display = 'none'
+			}
+		});
+ 	 var multiPickFields=['Mobile']; 
+ 	 var countries = [{'iso':'af','fl':'&#127462&#127467;','ds':'Afghanistan','dial':'+93'},{'iso':'al','fl':'&#127462&#127473;','ds':'Albania','dial':'+355'},{'iso':'dz','fl':'&#127465&#127487;','ds':'Algeria','dial':'+213'},{'iso':'as','fl':'&#127462&#127480;','ds':'American Samoa','dial':'+1684'},{'iso':'ad','fl':'&#127462&#127465;','ds':'Andorra','dial':'+376'},{'iso':'ao','fl':'&#127462&#127476;','ds':'Angola','dial':'+244'},{'iso':'ai','fl':'&#127462&#127470;','ds':'Anguilla','dial':'+1264'},{'iso':'aq','fl':'&#127462&#127478;','ds':'Antarctica','dial':'+672'},{'iso':'ag','fl':'&#127462&#127468;','ds':'Antigua & Barbuda','dial':'+1268'},{'iso':'ar','fl':'&#127462&#127479;','ds':'Argentina','dial':'+54'},{'iso':'am','fl':'&#127462&#127474;','ds':'Armenia','dial':'+374'},{'iso':'aw','fl':'&#127462&#127484;','ds':'Aruba','dial':'+297'},{'iso':'au','fl':'&#127462&#127482;','ds':'Australia','dial':'+61'},{'iso':'at','fl':'&#127462&#127481;','ds':'Austria','dial':'+43'},{'iso':'az','fl':'&#127462&#127487;','ds':'Azerbaijan','dial':'+994'},{'iso':'bs','fl':'&#127463&#127480;','ds':'Bahamas','dial':'+1242'},{'iso':'bh','fl':'&#127463&#127469;','ds':'Bahrain','dial':'+973'},{'iso':'bd','fl':'&#127463&#127465;','ds':'Bangladesh','dial':'+880'},{'iso':'bb','fl':'&#127463&#127463;','ds':'Barbados','dial':'+1246'},{'iso':'by','fl':'&#127463&#127486;','ds':'Belarus','dial':'+375'},{'iso':'be','fl':'&#127463&#127466;','ds':'Belgium','dial':'+32'},{'iso':'bz','fl':'&#127463&#127487;','ds':'Belize','dial':'+501'},{'iso':'bj','fl':'&#127463&#127471;','ds':'Benin','dial':'+229'},{'iso':'bm','fl':'&#127463&#127474;','ds':'Bermuda','dial':'+1441'},{'iso':'bt','fl':'&#127463&#127481;','ds':'Bhutan','dial':'+975'},{'iso':'bo','fl':'&#127463&#127476;','ds':'Bolivia','dial':'+591'},{'iso':'ba','fl':'&#127463&#127462;','ds':'Bosnia and Herzegovina','dial':'+387'},{'iso':'bw','fl':'&#127463&#127484;','ds':'Botswana','dial':'+267'},{'iso':'bv','fl':'&#127463&#127483;','ds':'Bouvet Island','dial':'+47'},{'iso':'br','fl':'&#127463&#127479;','ds':'Brazil','dial':'+55'},{'iso':'io','fl':'&#127470&#127476;','ds':'British Indian Ocean Territory','dial':'+246'},{'iso':'vg','fl':'&#127483&#127468;','ds':'British Virgin Islands','dial':'+1284'},{'iso':'bn','fl':'&#127463&#127475;','ds':'Brunei','dial':'+673'},{'iso':'bg','fl':'&#127463&#127468;','ds':'Bulgaria','dial':'+359'},{'iso':'bf','fl':'&#127463&#127467;','ds':'Burkina Faso','dial':'+226'},{'iso':'bi','fl':'&#127463&#127470;','ds':'Burundi','dial':'+257'},{'iso':'kh','fl':'&#127472&#127469;','ds':'Cambodia','dial':'+855'},{'iso':'cm','fl':'&#127464&#127474;','ds':'Cameroon','dial':'+237'},{'iso':'ca','fl':'&#127464&#127462;','ds':'Canada','dial':'+1'},{'iso':'','fl':'&#127464&#127483;','ds':'Cape Verde','dial':'+238'},{'iso':'cv','fl':'&#127463&#127478;','ds':'Caribbean Netherlands','dial':'+599'},{'iso':'ky','fl':'&#127472&#127486;','ds':'Cayman Islands','dial':'+1345'},{'iso':'cf','fl':'&#127464&#127467;','ds':'Central African Republic','dial':'+236'},{'iso':'td','fl':'&#127481&#127465;','ds':'Chad','dial':'+235'},{'iso':'cl','fl':'&#127464&#127473;','ds':'Chile','dial':'+56'},{'iso':'cn','fl':'&#127464&#127475;','ds':'China','dial':'+86'},{'iso':'cx','fl':'&#127464&#127485;','ds':'Christmas Island','dial':'+61'},{'iso':'cc','fl':'&#127464&#127464;','ds':'Cocos (Keeling) Island','dial':'+61'},{'iso':'co','fl':'&#127464&#127476;','ds':'Colombia','dial':'+57'},{'iso':'km','fl':'&#127472&#127474;','ds':'Comoros','dial':'+269'},{'iso':'cg','fl':'&#127464&#127468;','ds':'Congo - Brazzaville','dial':'+242'},{'iso':'cd','fl':'&#127464&#127465;','ds':'Congo - Kinshasa','dial':'+243'},{'iso':'ck','fl':'&#127464&#127472;','ds':'Cook Islands','dial':'+682'},{'iso':'cr','fl':'&#127464&#127479;','ds':'Costa Rica','dial':'+506'},{'iso':'hr','fl':'&#127469&#127479;','ds':'Croatia','dial':'+385'},{'iso':'cu','fl':'&#127464&#127482;','ds':'Cuba','dial':'+53'},{'iso':'cw','fl':'&#127464&#127484;','ds':'Curaçao','dial':'+599'},{'iso':'cy','fl':'&#127464&#127486;','ds':'Cyprus','dial':'+357'},{'iso':'cz','fl':'&#127464&#127487;','ds':'Czechia','dial':'+420'},{'iso':'ci','fl':'&#127464&#127470;','ds':'Côte d?Ivoire','dial':'+225'},{'iso':'dk','fl':'&#127465&#127472;','ds':'Denmark','dial':'+45'},{'iso':'dj','fl':'&#127465&#127471;','ds':'Djibouti','dial':'+253'},{'iso':'dm','fl':'&#127465&#127474;','ds':'Dominica','dial':'+1767'},{'iso':'do','fl':'&#127465&#127476;','ds':'Dominican Republic','dial':'+1'},{'iso':'ec','fl':'&#127466&#127464;','ds':'Ecuador','dial':'+593'},{'iso':'eg','fl':'&#127466&#127468;','ds':'Egypt','dial':'+20'},{'iso':'sv','fl':'&#127480&#127483;','ds':'El Salvador','dial':'+503'},{'iso':'gq','fl':'&#127468&#127478;','ds':'Equatorial Guinea','dial':'+240'},{'iso':'er','fl':'&#127466&#127479;','ds':'Eritrea','dial':'+291'},{'iso':'ee','fl':'&#127466&#127466;','ds':'Estonia','dial':'+372'},{'iso':'et','fl':'&#127466&#127481;','ds':'Ethiopia','dial':'+251'},{'iso':'fk','fl':'&#127467&#127472;','ds':'Falkland Islands','dial':'+500'},{'iso':'fo','fl':'&#127467&#127476;','ds':'Faroe Islands','dial':'+298'},{'iso':'fj','fl':'&#127467&#127471;','ds':'Fiji','dial':'+679'},{'iso':'fi','fl':'&#127467&#127470;','ds':'Finland','dial':'+358'},{'iso':'fr','fl':'&#127467&#127479;','ds':'France','dial':'+33'},{'iso':'gf','fl':'&#127468&#127467;','ds':'French Guiana','dial':'+594'},{'iso':'pf','fl':'&#127477&#127467;','ds':'French Polynesia','dial':'+689'},{'iso':'tf','fl':'&#127481&#127467;','ds':'French Southern Territories','dial':'+262'},{'iso':'ga','fl':'&#127468&#127462;','ds':'Gabon','dial':'+241'},{'iso':'gm','fl':'&#127468&#127474;','ds':'Gambia','dial':'+220'},{'iso':'ge','fl':'&#127468&#127466;','ds':'Georgia','dial':'+995'},{'iso':'de','fl':'&#127465&#127466;','ds':'Germany','dial':'+49'},{'iso':'gh','fl':'&#127468&#127469;','ds':'Ghana','dial':'+233'},{'iso':'gi','fl':'&#127468&#127470;','ds':'Gibraltar','dial':'+350'},{'iso':'gr','fl':'&#127468&#127479;','ds':'Greece','dial':'+30'},{'iso':'gl','fl':'&#127468&#127473;','ds':'Greenland','dial':'+299'},{'iso':'gd','fl':'&#127468&#127465;','ds':'Grenada','dial':'+1473'},{'iso':'gp','fl':'&#127468&#127477;','ds':'Guadeloupe','dial':'+590'},{'iso':'gu','fl':'&#127468&#127482;','ds':'Guam','dial':'+1671'},{'iso':'gt','fl':'&#127468&#127481;','ds':'Guatemala','dial':'+502'},{'iso':'gg','fl':'&#127468&#127468;','ds':'Guernsey','dial':'+44'},{'iso':'gn','fl':'&#127468&#127475;','ds':'Guinea','dial':'+224'},{'iso':'gw','fl':'&#127468&#127484;','ds':'Guinea-Bissau','dial':'+245'},{'iso':'gy','fl':'&#127468&#127486;','ds':'Guyana','dial':'+592'},{'iso':'ht','fl':'&#127469&#127481;','ds':'Haiti','dial':'+509'},{'iso':'hm','fl':'&#127469&#127474;','ds':'Heard & McDonald Islands','dial':'+672'},{'iso':'hn','fl':'&#127469&#127475;','ds':'Honduras','dial':'+504'},{'iso':'hk','fl':'&#127469&#127472;','ds':'Hong Kong','dial':'+852'},{'iso':'hu','fl':'&#127469&#127482;','ds':'Hungary','dial':'+36'},{'iso':'is','fl':'&#127470&#127480;','ds':'Iceland','dial':'+354'},{'iso':'in','fl':'&#127470&#127475;','ds':'India','dial':'+91'},{'iso':'id','fl':'&#127470&#127465;','ds':'Indonesia','dial':'+62'},{'iso':'ir','fl':'&#127470&#127479;','ds':'Iran','dial':'+98'},{'iso':'iq','fl':'&#127470&#127478;','ds':'Iraq','dial':'+964'},{'iso':'ie','fl':'&#127470&#127466;','ds':'Ireland','dial':'+353'},{'iso':'im','fl':'&#127470&#127474;','ds':'Isle of Man','dial':'+44'},{'iso':'il','fl':'&#127470&#127473;','ds':'Israel','dial':'+972'},{'iso':'it','fl':'&#127470&#127481;','ds':'Italy','dial':'+39'},{'iso':'jm','fl':'&#127471&#127474;','ds':'Jamaica','dial':'+1876'},{'iso':'jp','fl':'&#127471&#127477;','ds':'Japan','dial':'+81'},{'iso':'je','fl':'&#127471&#127466;','ds':'Jersey','dial':'+44'},{'iso':'jo','fl':'&#127471&#127476;','ds':'Jordan','dial':'+962'},{'iso':'kz','fl':'&#127472&#127487;','ds':'Kazakhstan','dial':'+7'},{'iso':'ke','fl':'&#127472&#127466;','ds':'Kenya','dial':'+254'},{'iso':'ki','fl':'&#127472&#127470;','ds':'Kiribati','dial':'+686'},{'iso':'xk','fl':'&#127485&#127472;','ds':'Kosovo','dial':'+383'},{'iso':'kw','fl':'&#127472&#127484;','ds':'Kuwait','dial':'+965'},{'iso':'kg','fl':'&#127472&#127468;','ds':'Kyrgyzstan','dial':'+996'},{'iso':'la','fl':'&#127473&#127462;','ds':'Laos','dial':'+856'},{'iso':'lv','fl':'&#127473&#127483;','ds':'Latvia','dial':'+371'},{'iso':'lb','fl':'&#127473&#127463;','ds':'Lebanon','dial':'+961'},{'iso':'ls','fl':'&#127473&#127480;','ds':'Lesotho','dial':'+266'},{'iso':'lr','fl':'&#127473&#127479;','ds':'Liberia','dial':'+231'},{'iso':'ly','fl':'&#127473&#127486;','ds':'Libya','dial':'+218'},{'iso':'li','fl':'&#127473&#127470;','ds':'Liechtenstein','dial':'+423'},{'iso':'lt','fl':'&#127473&#127481;','ds':'Lithuania','dial':'+370'},{'iso':'lu','fl':'&#127473&#127482;','ds':'Luxembourg','dial':'+352'},{'iso':'mo','fl':'&#127474&#127476;','ds':'Macao','dial':'+853'},{'iso':'mk','fl':'&#127474&#127472;','ds':'Macedonia','dial':'+389'},{'iso':'mg','fl':'&#127474&#127468;','ds':'Madagascar','dial':'+261'},{'iso':'mw','fl':'&#127474&#127484;','ds':'Malawi','dial':'+265'},{'iso':'my','fl':'&#127474&#127486;','ds':'Malaysia','dial':'+60'},{'iso':'mv','fl':'&#127474&#127483;','ds':'Maldives','dial':'+960'},{'iso':'ml','fl':'&#127474&#127473;','ds':'Mali','dial':'+223'},{'iso':'mt','fl':'&#127474&#127481;','ds':'Malta','dial':'+356'},{'iso':'mh','fl':'&#127474&#127469;','ds':'Marshall Islands','dial':'+692'},{'iso':'mq','fl':'&#127474&#127478;','ds':'Martinique','dial':'+596'},{'iso':'mr','fl':'&#127474&#127479;','ds':'Mauritania','dial':'+222'},{'iso':'mu','fl':'&#127474&#127482;','ds':'Mauritius','dial':'+230'},{'iso':'yt','fl':'&#127486&#127481;','ds':'Mayotte','dial':'+262'},{'iso':'mx','fl':'&#127474&#127485;','ds':'Mexico','dial':'+52'},{'iso':'fm','fl':'&#127467&#127474;','ds':'Micronesia','dial':'+691'},{'iso':'md','fl':'&#127474&#127465;','ds':'Moldova','dial':'+373'},{'iso':'mc','fl':'&#127474&#127464;','ds':'Monaco','dial':'+377'},{'iso':'mn','fl':'&#127474&#127475;','ds':'Mongolia','dial':'+976'},{'iso':'me','fl':'&#127474&#127466;','ds':'Montenegro','dial':'+382'},{'iso':'ms','fl':'&#127474&#127480;','ds':'Montserrat','dial':'+1664'},{'iso':'ma','fl':'&#127474&#127462;','ds':'Morocco','dial':'+212'},{'iso':'mz','fl':'&#127474&#127487;','ds':'Mozambique','dial':'+258'},{'iso':'mm','fl':'&#127474&#127474;','ds':'Myanmar (Burma)','dial':'+95'},{'iso':'na','fl':'&#127475&#127462;','ds':'Namibia','dial':'+264'},{'iso':'nr','fl':'&#127475&#127479;','ds':'Nauru','dial':'+674'},{'iso':'np','fl':'&#127475&#127477;','ds':'Nepal','dial':'+977'},{'iso':'nl','fl':'&#127475&#127473;','ds':'Netherlands','dial':'+31'},{'iso':'nc','fl':'&#127475&#127464;','ds':'New Caledonia','dial':'+687'},{'iso':'nz','fl':'&#127475&#127487;','ds':'New Zealand','dial':'+64'},{'iso':'ni','fl':'&#127475&#127470;','ds':'Nicaragua','dial':'+505'},{'iso':'ne','fl':'&#127475&#127466;','ds':'Niger','dial':'+227'},{'iso':'ng','fl':'&#127475&#127468;','ds':'Nigeria','dial':'+234'},{'iso':'nu','fl':'&#127475&#127482;','ds':'Niue','dial':'+683'},{'iso':'nf','fl':'&#127475&#127467;','ds':'Norfolk Island','dial':'+672'},{'iso':'kp','fl':'&#127472&#127477;','ds':'North Korea','dial':'+850'},{'iso':'mp','fl':'&#127474&#127477;','ds':'Northern Mariana Islands','dial':'+1670'},{'iso':'no','fl':'&#127475&#127476;','ds':'Norway','dial':'+47'},{'iso':'om','fl':'&#127476&#127474;','ds':'Oman','dial':'+968'},{'iso':'pk','fl':'&#127477&#127472;','ds':'Pakistan','dial':'+92'},{'iso':'pw','fl':'&#127477&#127484;','ds':'Palau','dial':'+680'},{'iso':'ps','fl':'&#127477&#127480;','ds':'Palestinian Territories','dial':'+970'},{'iso':'pa','fl':'&#127477&#127462;','ds':'Panama','dial':'+507'},{'iso':'pg','fl':'&#127477&#127468;','ds':'Papua New Guinea','dial':'+675'},{'iso':'py','fl':'&#127477&#127486;','ds':'Paraguay','dial':'+595'},{'iso':'pe','fl':'&#127477&#127466;','ds':'Peru','dial':'+51'},{'iso':'ph','fl':'&#127477&#127469;','ds':'Philippines','dial':'+63'},{'iso':'pn','fl':'&#127477&#127475;','ds':'Pitcairn Islands','dial':'+64'},{'iso':'pl','fl':'&#127477&#127473;','ds':'Poland','dial':'+48'},{'iso':'pt','fl':'&#127477&#127481;','ds':'Portugal','dial':'+351'},{'iso':'pr','fl':'&#127477&#127479;','ds':'Puerto Rico','dial':'+1'},{'iso':'qa','fl':'&#127478&#127462;','ds':'Qatar','dial':'+974'},{'iso':'ro','fl':'&#127479&#127476;','ds':'Romania','dial':'+40'},{'iso':'ru','fl':'&#127479&#127482;','ds':'Russia','dial':'+7'},{'iso':'rw','fl':'&#127479&#127484;','ds':'Rwanda','dial':'+250'},{'iso':'re','fl':'&#127479&#127466;','ds':'Réunion','dial':'+262'},{'iso':'ws','fl':'&#127484&#127480;','ds':'Samoa','dial':'+685'},{'iso':'sm','fl':'&#127480&#127474;','ds':'San Marino','dial':'+378'},{'iso':'sa','fl':'&#127480&#127462;','ds':'Saudi Arabia','dial':'+966'},{'iso':'sn','fl':'&#127480&#127475;','ds':'Senegal','dial':'+221'},{'iso':'rs','fl':'&#127479&#127480;','ds':'Serbia','dial':'+381'},{'iso':'sc','fl':'&#127480&#127464;','ds':'Seychelles','dial':'+248'},{'iso':'sl','fl':'&#127480&#127473;','ds':'Sierra Leone','dial':'+232'},{'iso':'sg','fl':'&#127480&#127468;','ds':'Singapore','dial':'+65'},{'iso':'sx','fl':'&#127480&#127485;','ds':'Sint Maarten','dial':'+1721'},{'iso':'sk','fl':'&#127480&#127472;','ds':'Slovakia','dial':'+421'},{'iso':'si','fl':'&#127480&#127470;','ds':'Slovenia','dial':'+386'},{'iso':'sb','fl':'&#127480&#127463;','ds':'Solomon Islands','dial':'+677'},{'iso':'so','fl':'&#127480&#127476;','ds':'Somalia','dial':'+252'},{'iso':'za','fl':'&#127487&#127462;','ds':'South Africa','dial':'+27'},{'iso':'gs','fl':'&#127468&#127480;','ds':'South Georgia & South Sandwich Islands','dial':'+500'},{'iso':'kr','fl':'&#127472&#127479;','ds':'South Korea','dial':'+82'},{'iso':'ss','fl':'&#127480&#127480;','ds':'South Sudan','dial':'+211'},{'iso':'es','fl':'&#127466&#127480;','ds':'Spain','dial':'+34'},{'iso':'lk','fl':'&#127473&#127472;','ds':'Sri Lanka','dial':'+94'},{'iso':'bl','fl':'&#127463&#127473;','ds':'St Barthélemy','dial':'+590'},{'iso':'sh','fl':'&#127480&#127469;','ds':'St Helena','dial':'+290'},{'iso':'kn','fl':'&#127472&#127475;','ds':'St Kitts & Nevis','dial':'+1869'},{'iso':'lc','fl':'&#127473&#127464;','ds':'St Lucia','dial':'+1758'},{'iso':'mf','fl':'&#127474&#127467;','ds':'St Martin','dial':'+590'},{'iso':'pm','fl':'&#127477&#127474;','ds':'St Pierre & Miquelon','dial':'+508'},{'iso':'vc','fl':'&#127483&#127464;','ds':'St Vincent & Grenadines','dial':'+1784'},{'iso':'sd','fl':'&#127480&#127465;','ds':'Sudan','dial':'+249'},{'iso':'sr','fl':'&#127480&#127479;','ds':'Suriname','dial':'+597'},{'iso':'sj','fl':'&#127480&#127471;','ds':'Svalbard & Jan Mayen','dial':'+47'},{'iso':'sz','fl':'&#127480&#127487;','ds':'Swaziland','dial':'+268'},{'iso':'se','fl':'&#127480&#127466;','ds':'Sweden','dial':'+46'},{'iso':'ch','fl':'&#127464&#127469;','ds':'Switzerland','dial':'+41'},{'iso':'sy','fl':'&#127480&#127486;','ds':'Syria','dial':'+963'},{'iso':'st','fl':'&#127480&#127481;','ds':'São Tomé & Príncipe','dial':'+239'},{'iso':'tw','fl':'&#127481&#127484;','ds':'Taiwan','dial':'+886'},{'iso':'tj','fl':'&#127481&#127471;','ds':'Tajikistan','dial':'+992'},{'iso':'tz','fl':'&#127481&#127487;','ds':'Tanzania','dial':'+255'},{'iso':'th','fl':'&#127481&#127469;','ds':'Thailand','dial':'+66'},{'iso':'tl','fl':'&#127481&#127473;','ds':'Timor-Leste','dial':'+670'},{'iso':'tg','fl':'&#127481&#127468;','ds':'Togo','dial':'+228'},{'iso':'tk','fl':'&#127481&#127472;','ds':'Tokelau','dial':'+690'},{'iso':'to','fl':'&#127481&#127476;','ds':'Tonga','dial':'+676'},{'iso':'tt','fl':'&#127481&#127481;','ds':'Trinidad & Tobago','dial':'+1868'},{'iso':'tn','fl':'&#127481&#127475;','ds':'Tunisia','dial':'+216'},{'iso':'tr','fl':'&#127481&#127479;','ds':'Turkey','dial':'+90'},{'iso':'tm','fl':'&#127481&#127474;','ds':'Turkmenistan','dial':'+993'},{'iso':'tc','fl':'&#127481&#127464;','ds':'Turks & Caicos Islands','dial':'+1'},{'iso':'tv','fl':'&#127481&#127483;','ds':'Tuvalu','dial':'+688'},{'iso':'um','fl':'&#127482&#127474;','ds':'US Outlying Islands','dial':'+1'},{'iso':'vi','fl':'&#127483&#127470;','ds':'US Virgin Islands','dial':'+1340'},{'iso':'ug','fl':'&#127482&#127468;','ds':'Uganda','dial':'+256'},{'iso':'ua','fl':'&#127482&#127462;','ds':'Ukraine','dial':'+380'},{'iso':'ae','fl':'&#127462&#127466;','ds':'United Arab Emirates','dial':'+971'},{'iso':'gb','fl':'&#127468&#127463;','ds':'United Kingdom','dial':'+44'},{'iso':'us','fl':'&#127482&#127480;','ds':'United States','dial':'+1'},{'iso':'uy','fl':'&#127482&#127486;','ds':'Uruguay','dial':'+598'},{'iso':'uz','fl':'&#127482&#127487;','ds':'Uzbekistan','dial':'+998'},{'iso':'vu','fl':'&#127483&#127482;','ds':'Vanuatu','dial':'+678'},{'iso':'va','fl':'&#127483&#127462;','ds':'Vatican City','dial':'+379'},{'iso':'ve','fl':'&#127483&#127466;','ds':'Venezuela','dial':'+58'},{'iso':'vn','fl':'&#127483&#127475;','ds':'Vietnam','dial':'+84'},{'iso':'wf','fl':'&#127484&#127467;','ds':'Wallis & Futuna','dial':'+681'},{'iso':'eh','fl':'&#127466&#127469;','ds':'Western Sahara','dial':'+212'},{'iso':'ye','fl':'&#127486&#127466;','ds':'Yemen','dial':'+967'},{'iso':'zm','fl':'&#127487&#127474;','ds':'Zambia','dial':'+260'},{'iso':'zw','fl':'&#127487&#127484;','ds':'Zimbabwe','dial':'+263'},{'iso':'ax','fl':'&#127462&#127485;','ds':'Åland Islands','dial':'+672'}]	;
+ 	countries.forEach(function (country){
+ 	 	country.ref = country.ds + ' ' + country.dial;
+ 	});
+ 	 var singleSelectDrpData = {
+ 	 	dropdownItems: countries,
+ 	 	displayLabel1: 'ds',
+ 	 	displayLabel2: 'dial',
+ 	 	searchValue: 'ref',
+ 	 	showInSelection: ['displayLabel2']
+ 	 };
+ 	 var phMobileCode = 'findIP';
+ 	createSingleSelectDrp('phMobile', singleSelectDrpData);
+ 	setTimeout(function(){
+ 	 	document.querySelectorAll('[isPhone=true]').forEach(function(ele){
+ 	 	 	if(ele.hasAttribute('findip')) {
+ 	 	 	 	window[ele.id+'Code'] = localCode;
+ 	 	 	}
+ 	 	 	setSelectedOption(ele.querySelector('[iso=' + window[ele.id + 'Code'] + ']'), ele);
+ 	 	})
+ 	}, 1500);
+</script>
+
+<section class="contact-section">
+  <h2>GET IN TOUCH</h2>
+  <div class="contact-container">
+    <!-- Address -->
+    <div class="contact-box">
+      <div class="icon">📍</div>
+      <h3>ADDRESS</h3>
+      <p><strong>CIN:</strong> IJ27900HR2024PTC123582</p>
+      <p>1250, First Floor, Sector 15-11,</p>
+      <p>Gurugram HR - 122001</p>
+    </div>
+
+    <!-- Phone -->
+    <div class="contact-box">
+      <div class="icon">📞</div>
+      <h3>PHONE</h3>
+      <p><strong>Call Us:</strong></p>
+      <p><a href="tel:+919289184648">+91 92891 84648</a></p>
+    </div>
+
+    <!-- Email -->
+    <div class="contact-box">
+      <div class="icon">✉️</div>
+      <h3>EMAIL</h3>
+      <p><strong>General Inquiries:</strong></p>
+      <p><a href="mailto:info@eddybits.com">info@eddybits.com</a></p>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="site-footer" role="contentinfo" aria-label="Site Footer">
+  <div class="footer-container">
+    <!-- Company Info -->
+    <div class="footer-section company-info">
+      <h3>EddyBits Innovations Private Limited</h3>
+      <p>CIN: U27900HR2024PTC123582</p>
+      <p>1250, First Floor, Sector 15-II, Gurugram HR – 122001</p>
+      <p>Email: <a href="mailto:info@eddybits.com">info@eddybits.com</a></p>
+      <p>Phone: <a href="tel:+919289184648">+91-92891 84648</a></p>
+    </div>
+
+    <!-- Sitemap -->
+    <div class="footer-section footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/products">Products / Solutions</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Policies -->
+    <div class="footer-section footer-policies">
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Follow Us (moved below Policies) -->
+    <!-- <div class="footer-section social-media">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="YouTube">
+          <img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="YouTube">
+        </a>
+        <a href="#" aria-label="Twitter">
+          <img src="https://img.freepik.com/premium-vector/x-new-social-network-black-app-icon-twitter-rebranded-as-x-twitter-s-logo-was-changed_277909-568.jpg?semt=ais_hybrid" alt="Twitter">
+        </a>
+        <a href="#" aria-label="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+      </div>
+    </div> -->
+
+    <!-- Certifications (moved up where Follow Us was) -->
+    <div class="footer-section trust-logos">
+      <h4>Certifications</h4>
+      <div class="trust-logos">
+        <img src="https://cdn-icons-png.flaticon.com/512/3000/3000745.png" alt="DPIIT Certified" class="trust-logo">
+        <img src="https://e7.pngegg.com/pngimages/725/47/png-clipart-government-of-india-ministry-of-micro-small-and-medium-enterprises-small-business-india-text-logo.png" alt="Udyam MSME" class="trust-logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Full-Width Bar -->
+  <div class="footer-bottom">
+    <p>© 2025 EddyBits Innovations Private Limited. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script src="Contact.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body>
+</body>
+</html>
