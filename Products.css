@@ -1,0 +1,481 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #ffffff;
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 16px;
+}
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+  color: #1d4ed8;
+  outline: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  background: #0d1f44;
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Nav Layout */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Nav Links */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto; /* Push nav links to the right of center */
+  align-items: center;
+}
+nav ul li a {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Hamburger - hidden by default */
+#hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+#hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-content {
+    flex-wrap: wrap;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #0d1f44;
+    position: absolute;
+    top: 70px;
+    right: 1rem;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  #hamburger {
+    display: flex;
+  }
+}
+
+.hero {
+  background: linear-gradient(135deg, #0d1f44, #00c3ff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero__content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.hero__description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero__description {
+    font-size: 1.1rem;
+  }
+}
+
+.products__title {
+  margin-top: 1rem;
+  font-size: 1.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+}
+
+.products__subtitle {
+  margin-bottom: 2rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover; /* fills the area completely */
+  object-position: center;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* fallback background if image has transparency */
+  margin-bottom: 1rem;
+}
+
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #003366;
+}
+
+.product-card ul {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-card ul li {
+  list-style: disc;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically (optional) */
+}
+
+.btn-card {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 80%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-card:hover {
+  background-color: #0056b3;
+}
+
+.cta__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  margin-top: 2rem;
+}
+
+.cta__description {
+  margin-top: 0.5rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+}
+
+.cta__actions {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* optional: aligns vertically if height is set */
+  margin-top: 1rem;        /* spacing above */
+
+}
+
+
+.btn--primary,
+.btn--outline {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn--primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  
+}
+
+.btn--primary:hover {
+  background-color: #0056b3;
+}
+
+.btn--outline {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.btn--outline:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.site-footer {
+  background: #ffffff;
+  color: #6b7280;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 4rem 1rem 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.footer-section a:hover,
+.footer-section a:focus {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  margin-top: -10px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a i {
+  font-size: 24px;
+}
+
+/* Specific brand colors */
+.social-icons a[aria-label="YouTube"] i {
+  color: #FF0000;
+}
+.social-icons a[aria-label="Twitter"] i {
+  color: #1DA1F2;
+}
+.social-icons a[aria-label="Instagram"] i {
+  color: #E4405F;
+}
+.social-icons a[aria-label="LinkedIn"] i {
+  color: #0077B5;
+}
+
+.social-icons a:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+}
+
+.social-content {
+  text-align: center;
+}
+
+
+.footer-bottom {
+  background: #ffffff;
+  color: black;
+  text-align: center;
+  padding-top: 1rem;
+  margin-top: 5rem;
+  margin-bottom: -2rem;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  width: 100vw;       /* ✅ Ensures full width */
+  margin-top: auto;   /* ✅ Pushes it to the bottom if content is short */
+}
+
+/* Responsive stack */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .trust-logos,
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+.footer-section.footer-certifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-section.footer-certifications h4 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.certificates {
+  display: flex;
+  gap: 3rem; /* Adjust the gap between certificates */
+  align-items: center;
+}
+
+.certificates .trust-logo {
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+  transition: filter 0.3s ease;
+}
+
+.certificates .trust-logo:hover {
+  filter: drop-shadow(0 1px 4px rgb(37 99 235 / 0.8));
+}
